@@ -15,20 +15,40 @@ class TrieNode {
 }
 
 class Trie {
-    List<TrieNode> nodes = new ArrayList<>(); // MAX = 26, English alphabetical chars
+    List<TrieNode> nodes = new ArrayList<TrieNode>(); // MAX = 26, English alphabetical chars
 
     void add(String item){
         char[] chArr = item.toCharArray();
-        for (int i=0; i<chArr.length; i++) {
-            for (TrieNode node : nodes) {
-                if (node.c == chArr[i]) { // goes to children
-
-                } else { // add node
-                    //node
+        TrieNode node = containsOf(chArr[0]);
+        if(node == null){ // make a new node
+            node = new TrieNode(chArr[0]);
+            for(int i=1; i<chArr.length; i++)
+                node.children.put(chArr[i], new TrieNode());
+            nodes.add(node);
+        } else { // already contains CHAR, update a trie
+            boolean bFound = false;
+            for (Map.Entry<Character, TrieNode> child_node : node.children.entrySet()){
+                char key = child_node.getKey();
+                for(char ch : chArr){
+                    if(key == ch){
+                        bFound = true;
+                        break;
+                    }
                 }
             }
+            if(!bFound) {
+                for(int i=1; i<chArr.length; i++)
+                    node.children.put(chArr[i], new TrieNode());
+            }
         }
+    }
 
+    TrieNode containsOf(char ch){
+        for (TrieNode node : nodes) {
+            if (node.c == ch)
+                return node;
+        }
+        return null;
     }
 
     void find(){

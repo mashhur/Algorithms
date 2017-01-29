@@ -12,7 +12,7 @@ public class QuickSort {
     /*
     * Quicksort 1 Problem of hackerrank
     */
-    public static void TestQuickSort1(){
+    public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
 
@@ -25,6 +25,7 @@ public class QuickSort {
         }
 
         quickSort(nArr);
+        System.out.println(nSwaps);
     }
 
     private static void quickSort(int[] ar) {
@@ -59,11 +60,14 @@ public class QuickSort {
         //printArray(ar, left, right);
     }
 
+    static int nSwaps;
     private static void swap(int[] ar, int n, int k){
+        if(ar[n] == ar[k]) return;
+
         int nVal = ar[n];
         ar[n] = ar[k];
         ar[k] = nVal;
-        //printArray(ar);
+        nSwaps++;
     }
 
     private static void printArray(int[] ar) {

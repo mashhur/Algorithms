@@ -1,7 +1,6 @@
 import ccinterview.LeftRotation;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by mashhur on 11/12/16.
@@ -90,8 +89,11 @@ public class Exercises {
         return n * n1/n * n2/n;
     }
 
+
     public static void main(String[] args){
         System.out.println("Main Run");
+        Scanner sc = new Scanner(System.in);
+
 
         /*
         Scanner sc = new Scanner(System.in);
