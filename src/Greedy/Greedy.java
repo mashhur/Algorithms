@@ -330,14 +330,29 @@ public class Greedy {
             System.out.print(nList.get(i).n_key + " ");
     }
 
-    // 
-
     public static void UnitTest(){
         //GridChallenge();
         //PriyankaAndToys();
         //MaxPermutation();
         //Flowers();
         //MeetingPoint();
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int p = in.nextInt();
+        for(int a0 = 0; a0 < p; a0++){
+            int n = in.nextInt();
+            System.out.println(isPrime(n) == true ? "Prime" : "Not prime");
+        }
+    }
+
+    static boolean isPrime(int num){
+        if(num < 2) return false;
+        for(int i=2; i<=Math.sqrt(num); i++){
+            if(num % i == 0) return false;
+        }
+        return true;
     }
 }
 

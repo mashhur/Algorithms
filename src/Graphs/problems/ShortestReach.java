@@ -6,17 +6,28 @@ import java.util.*;
  * Created by mashhur on 1/31/17.
  */
 
-
 public class ShortestReach {
     /*
-    * 2
-4 2
-1 2
-1 3
-1
-3 1
-2 3
-2
+        // 1st test case
+        2
+        4 2
+        1 2
+        1 3
+        1
+        3 1
+        2 3
+        2
+
+        // 2nd test case
+        1
+        10 6
+        3 1
+        10 1
+        10 1
+        3 1
+        1 8
+        5 2
+        3
     * */
 
     public static void main(String args[]){
@@ -24,48 +35,47 @@ public class ShortestReach {
         int q = sc.nextInt();
         for (int i=0; i<q; i++){
             int n = sc.nextInt();
-            Map<Integer, Graph> nMap = new HashMap<>();
-            for (int k=1; k<=n; k++)
-                nMap.put(k, new Graph(k));
+            int[][] nMat = new int[n][n];
 
             int m = sc.nextInt();
             for (int k=0; k<m; k++){
-                int u = sc.nextInt();
-                int v = sc.nextInt();
-                if(nMap.containsKey(u)){
-                    Graph gr = nMap.get(u);
-                    gr.nList.add(v);
-                } else {
-                    nMap.put(u, new Graph(u, v));
+                int u = sc.nextInt() - 1;
+                int v = sc.nextInt() - 1;
+                // add edge
+                nMat[u][v] = 1;
+                nMat[v][u] = 1;
+            }
+
+            int[] nDistance = new int[n];
+
+            int idx = sc.nextInt() - 1;
+            Queue<Integer> queue = new LinkedList<>();
+            queue.add(idx);
+
+            boolean[] nVisit = new boolean[n];
+            nVisit[idx] = true;
+
+            while (!queue.isEmpty()){
+                int nStartIdx = queue.poll();
+                //System.out.println("Start idx: " + (nStartIdx+1));
+                int[] nChildArr = nMat[nStartIdx];
+                for (int x=0; x<nChildArr.length; x++) {
+                    if(nChildArr[x] == 1 && !nVisit[x]) {
+                        //System.out.println("Child idx: " + (x+1));
+                        nDistance[x] = nDistance[nStartIdx] + 6;
+                        queue.add(x);
+                        nVisit[x] = true;
+                    }
                 }
             }
 
-            int nStart = sc.nextInt();
-            Graph gr = nMap.get(nStart);
-            Stack<Graph> stack = new Stack<>();
-            stack.push(gr);
-
-            List<Integer> nList = new ArrayList<>();
-            // BFS traversal
-            while (!stack.isEmpty()){
-                Graph graph = stack.pop();
-                for (int item : graph.nList){
-                    if(nMap.containsKey(item)){
-                        System.out.print("6 ");
-                        nList.add(graph.idx);
-                        stack.push(nMap.get(item));
-                    } else
-                        System.out.print("-1 ");
-                }
-            }
-
-            /*for (Map.Entry<Integer, Graph> entry : nMap.entrySet()){
-                if(nList.contains(entry.getKey()))
-                    System.out.print("6 ");
+            for (int k=0; k<n; k++){
+                if(k == idx) continue;
+                if(nDistance[k] > 0)
+                    System.out.print(nDistance[k] + " ");
                 else
                     System.out.print("-1 ");
-            }*/
-
+            }
             System.out.println();
         }
     }
