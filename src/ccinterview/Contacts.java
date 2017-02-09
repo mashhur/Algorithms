@@ -6,7 +6,7 @@ import java.util.*;
 
 class TrieNode {
     char c;
-    HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
+    List<TrieNode> children = new ArrayList<>();
 
     public TrieNode() {}
     public TrieNode(char c){
@@ -15,35 +15,53 @@ class TrieNode {
 }
 
 class Trie {
-    List<TrieNode> nodes = new ArrayList<TrieNode>(); // MAX = 26, English alphabetical chars
+    List<TrieNode> nodes = new ArrayList<>(); // MAX = 26, English alphabetical chars
 
     void add(String item){
         char[] chArr = item.toCharArray();
-        TrieNode node = containsOf(chArr[0]);
-        if(node == null){ // make a new node
-            node = new TrieNode(chArr[0]);
-            for(int i=1; i<chArr.length; i++)
-                node.children.put(chArr[i], new TrieNode());
-            nodes.add(node);
-        } else { // already contains CHAR, update a trie
-            boolean bFound = false;
-            for (Map.Entry<Character, TrieNode> child_node : node.children.entrySet()){
-                char key = child_node.getKey();
-                for(char ch : chArr){
-                    if(key == ch){
-                        bFound = true;
-                        break;
-                    }
-                }
+        if(nodes.size() == 0) {
+            for (int i = 0; i < chArr.length; i++)
+                nodes.add(new TrieNode(chArr[i]));
+            return;
+        }
+
+        TrieNode lastNode = null;
+        for(int i=0; i<chArr.length; i++) {
+            TrieNode node = containsOf(chArr[i], nodes);
+            if(node != null)
+                lastNode = node;
+            if(node == null) {
+                addToChild(lastNode, i, chArr);
+                break;
             }
-            if(!bFound) {
-                for(int i=1; i<chArr.length; i++)
-                    node.children.put(chArr[i], new TrieNode());
-            }
+        }
+
+        for (TrieNode node : nodes){
+            print(node);
         }
     }
 
-    TrieNode containsOf(char ch){
+    void addToChild(TrieNode node, int idx, char[] chArr){
+        TrieNode lastNode = node;
+        while (node != null && idx < chArr.length) {
+            node = containsOf(chArr[idx], node.children);
+            if(node != null)
+                lastNode = node;
+            idx++;
+        }
+        if(idx == chArr.length) return;
+
+        if(node == null) {
+            while (idx < chArr.length) {
+                lastNode.children.add(new TrieNode(chArr[idx]));
+                idx++;
+            }
+        }
+        else
+            addToChild(lastNode, idx, chArr);
+    }
+
+    TrieNode containsOf(char ch, List<TrieNode> nodes){
         for (TrieNode node : nodes) {
             if (node.c == ch)
                 return node;
@@ -57,6 +75,12 @@ class Trie {
 
     int count(String part){
         return 0;
+    }
+
+    void print(TrieNode node){
+        System.out.print(node.c + " ");
+        for(TrieNode inner_node : node.children)
+            print(inner_node);
     }
 }
 
