@@ -67,7 +67,7 @@ public class DFS {
         dfs.traverse(nAdj, 0);
         */
 
-        AdjacencyList nAdjList = new AdjacencyList(5);
+        AdjacencyList nAdjList = new AdjacencyList(5, false);
         nAdjList.addEdge(0, 1);
         nAdjList.addEdge(0, 4);
         nAdjList.addEdge(1, 2);

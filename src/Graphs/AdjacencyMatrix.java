@@ -7,11 +7,13 @@ package Graphs;
  */
 public class AdjacencyMatrix {
     private int nNodes;
+    private boolean isDirected;
     private int[][] nMatrix;
 
-    public AdjacencyMatrix(int nodes){
+    public AdjacencyMatrix(int nodes, boolean bDirected){
         if(nodes <= 0) return;
 
+        this.isDirected = bDirected;
         this.nNodes = nodes;
         nMatrix = new int[nodes][nodes];
     }
@@ -28,7 +30,9 @@ public class AdjacencyMatrix {
     public void addEdge(int x, int y){
         if(x >= nNodes || y >= nNodes) return;
         nMatrix[x][y] = 1;
-        nMatrix[y][x] = 1;
+
+        if(!isDirected)
+            nMatrix[y][x] = 1;
     }
 
     public void removeEdge(int x, int y){
@@ -47,7 +51,7 @@ public class AdjacencyMatrix {
     }
 
     public static void main(String[] args){
-        AdjacencyMatrix nAdj = new AdjacencyMatrix(5);
+        AdjacencyMatrix nAdj = new AdjacencyMatrix(5, false);
         nAdj.addEdge(0, 1);
         nAdj.addEdge(0, 4);
         nAdj.addEdge(1, 2);

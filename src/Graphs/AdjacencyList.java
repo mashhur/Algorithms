@@ -11,10 +11,11 @@ import java.util.List;
  */
 public class AdjacencyList {
     private int v;
+    private boolean isDirected;
     List<Integer>[] nAdjMap;
-    public AdjacencyList(int vertexes) {
+    public AdjacencyList(int vertexes, boolean bDirected) {
         if(vertexes <= 0) return;
-
+        this.isDirected = bDirected;
         this.v = vertexes;
         nAdjMap = new ArrayList[v];
         for (int i=0; i<vertexes; i++) {
@@ -33,7 +34,9 @@ public class AdjacencyList {
     public void addEdge(int x, int y) {
         if(x >= v || y >= v) return;
         nAdjMap[x].add(y);
-        nAdjMap[y].add(x);
+
+        if(!isDirected)
+            nAdjMap[y].add(x);
     }
 
     public void removeEdge(int x, int y) {
@@ -57,7 +60,7 @@ public class AdjacencyList {
     }
 
     public static void main(String[] args){
-        AdjacencyList nAdj = new AdjacencyList(5);
+        AdjacencyList nAdj = new AdjacencyList(5, false);
         nAdj.addEdge(0, 1);
         nAdj.addEdge(0, 4);
         nAdj.addEdge(1, 2);
