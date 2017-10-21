@@ -1,5 +1,9 @@
 import ccinterview.LeftRotation;
 
+import java.math.BigInteger;
+import java.sql.Timestamp;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -94,7 +98,9 @@ public class Exercises {
         System.out.println("Main Run");
         Scanner sc = new Scanner(System.in);
 
-
+        BigInteger n = sc.nextBigInteger();
+        boolean b = n.isProbablePrime(2);
+        System.out.println(b == true ? "prime" : "not prime");
         /*
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -114,13 +120,13 @@ public class Exercises {
         // hexa to decimal test
         n = ConvertHexaToDecimal(sHexa);
         System.out.println(sHexa + " to decimal : " + n);
-
+           */
         // Greatest Common Factor test
         System.out.println("GCF : " + gcd(30, 20));
 
         // Least Common Denominator test
         System.out.println("LCD : " + lcd(30, 20));
-        */
+
 
         /*
         // test of my queue
@@ -169,5 +175,7 @@ public class Exercises {
 
         sStack.print();
         */
+
     }
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }

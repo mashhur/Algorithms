@@ -13,13 +13,17 @@ public class MergeSort {
 
     public static void main(String a[]){
 
-        int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
+        //int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
+        int[] inputArr = {2, 1, 3, 1, 2};
+        //int[] inputArr = {1, 1, 1, 2, 2};
         MergeSort mms = new MergeSort();
         mms.sort(inputArr);
         for(int i:inputArr){
             System.out.print(i);
             System.out.print(" ");
         }
+        System.out.println();
+        System.out.println(nSwapCount);
     }
 
     public void sort(int inputArr[]) {
@@ -39,6 +43,7 @@ public class MergeSort {
         }
     }
 
+    static int nSwapCount = 0;
     private void mergeParts(int lowerIndex, int middle, int higherIndex) {
 
         for (int i = lowerIndex; i <= higherIndex; i++) {
@@ -51,9 +56,11 @@ public class MergeSort {
             if (tempMergArr[i] <= tempMergArr[j]) {
                 array[k] = tempMergArr[i];
                 i++;
+                //nSwapCount++;
             } else {
                 array[k] = tempMergArr[j];
                 j++;
+                nSwapCount++;
             }
             k++;
         }
@@ -61,6 +68,7 @@ public class MergeSort {
             array[k] = tempMergArr[i];
             k++;
             i++;
+            nSwapCount++;
         }
     }
 }

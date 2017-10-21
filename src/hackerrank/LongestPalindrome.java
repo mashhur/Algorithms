@@ -40,7 +40,7 @@ public class LongestPalindrome {
                 }
             }
 
-            if(bFound) break;;
+            if(bFound) break;
         }
 
         for (int i=0; i<nList.size(); i++){
