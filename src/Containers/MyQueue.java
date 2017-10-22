@@ -10,7 +10,7 @@ public class MyQueue<Object> {
     private Node<Object> tail;
     Mutex mutex = new Mutex();
 
-    public void put(Node node){
+    public void put(Node node) {
         mutex.lock();
         nSize++;
         if(root == null) {
@@ -26,7 +26,7 @@ public class MyQueue<Object> {
         mutex.unlock();
     }
 
-    public Node pop(){
+    public Node pop() {
         mutex.lock();
         if(root == null) return null;
 
@@ -52,7 +52,7 @@ public class MyQueue<Object> {
         mutex.unlock();
     }
 
-    public long getSize(){
+    public long getSize() {
         System.out.println("Size of my queue is : " + nSize);
         return nSize;
     }

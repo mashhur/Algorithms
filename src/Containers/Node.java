@@ -5,13 +5,21 @@ package Containers;
  */
 
 public class Node<T>{
-    public Node(T data){
+    public T data;
+    public T key;
+
+    public Node next;
+
+    public Node(T data) {
         this.data = data;
     }
 
-    public void add(T data){
+    public Node(T key, T data) {
+        this.key = key;
         this.data = data;
     }
-    public T data;
-    public Node next;
+
+    public void add(T data) {
+        this.data = data;
+    }
 }
