@@ -1,4 +1,5 @@
 import ccinterview.LeftRotation;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -96,86 +97,72 @@ public class Exercises {
 
     public static void main(String[] args){
         System.out.println("Main Run");
-        Scanner sc = new Scanner(System.in);
 
-        BigInteger n = sc.nextBigInteger();
-        boolean b = n.isProbablePrime(2);
-        System.out.println(b == true ? "prime" : "not prime");
-        /*
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        // int to binary test
-        String sBinary = ConvertDecimalToBinary(n);
-        System.out.println(n + " to binary : " + sBinary);
-
-        // binary to int test
-        int nRes = ConvertBinaryToInteger(sBinary);
-        System.out.println(sBinary + " to integer : " + nRes);
-
-        // decimal to hexa test
-        String sHexa = ConvertDecimalToHexa(n);
-        System.out.println(n + " to hexa : " + sHexa);
-
-        // hexa to decimal test
-        n = ConvertHexaToDecimal(sHexa);
-        System.out.println(sHexa + " to decimal : " + n);
-           */
-        // Greatest Common Factor test
-        System.out.println("GCF : " + gcd(30, 20));
-
-        // Least Common Denominator test
-        System.out.println("LCD : " + lcd(30, 20));
-
-
-        /*
-        // test of my queue
-        MyQueue<Object> nQueue = new MyQueue<>();
-
-        Node<Integer> node1 = new Node<>();
-        node1.data = 1;
-        nQueue.put(node1);
-
-        Node<String> node2 = new Node<>();
-        node2.data = "2";
-        nQueue.put(node2);
-
-        Node<String> node3 = new Node<>();
-        node3.data = "3";
-        nQueue.put(node3);
-
-        nQueue.getSize();
-        nQueue.print();
-
-        Node node = nQueue.pop();
-        nQueue.getSize();
-        nQueue.print();
-        */
-
-        /*
-        // test of my stack
-        MyStack<Object> sStack = new MyStack<>();
-        Node<Integer> node1 = new Node<>();
-        node1.data = 1;
-        sStack.push(node1);
-
-        Node<String> node2 = new Node<>();
-        node2.data = "2";
-        sStack.push(node2);
-
-        Node<String> node3 = new Node<>();
-        node3.data = "3";
-        sStack.push(node3);
-
-        sStack.getSize();
-        sStack.print();
-
-        while (sStack.getSize() > 0)
-            sStack.pop();
-
-        sStack.print();
-        */
-
+        System.out.println(judgeCircle("UDLLRLDDRURU"));
     }
-    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+
+    // string solution
+    public static boolean isPalindrome(int x) {
+        char[] arr = String.valueOf(x).toCharArray();
+        int i = arr[0] == '-' ? 1 : 0, j=arr.length-1;
+        while (i<j) {
+            if(arr[i] != arr[j])
+                return false;
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+
+    // divide by 10 + remain solution
+    public static boolean isPalindrome2(int x) {
+
+        int last_idx = x/10;
+
+        return true;
+    }
+
+    public static boolean judgeCircle(String moves) {
+        Map<Integer, Character> map = new HashMap<>();
+        char arr[] = moves.toCharArray();
+
+        int idx = 0;
+        for(char ch : arr) {
+            idx++;
+            boolean bRes = false;
+            switch (ch) {
+                case 'U':
+                    bRes = deleteMove(map, 'D');
+                    break;
+                case 'D':
+                    bRes = deleteMove(map, 'U');
+                    break;
+                case 'L':
+                    bRes = deleteMove(map, 'R');
+                    break;
+                case 'R':
+                    bRes = deleteMove(map, 'L');
+                    break;
+            }
+
+            if(bRes == false)
+                map.put(idx, ch);
+        }
+
+        return map.isEmpty();
+    }
+
+    public static boolean deleteMove(Map<Integer, Character> map, char ch) {
+        Iterator<Integer> iterator = map.keySet().iterator();
+        while (iterator.hasNext()) {
+            int idx = iterator.next();
+            if(map.get(idx) == ch) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -42,7 +42,7 @@ public class DFS {
             System.out.println("Visit : " + n);
             List<Integer> nList = nAdjList.getVertice(n);
             for (int i : nList){
-                if(bVisitedArr[i] == false){
+                if(bVisitedArr[i] == false) {
                     stack.push(i);
                     bVisitedArr[i] = true;
                 }

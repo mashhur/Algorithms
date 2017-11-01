@@ -1173,6 +1173,7 @@ public class Solution {
         }
         return -1;
     }
+
     public static void BinarySearch(String[] args) {
     /*int[] whitelist = In.readInts(args[0]);
     Arrays.sort(whitelist);
@@ -2283,24 +2284,6 @@ public class Solution {
         System.out.println(pQueue.poll());
     }
 
-    public static void main(String[] args){
-
-        //AmazonTxProblem();
-
-        Scanner sc = new Scanner(System.in);
-        long l = sc.nextLong();
-        System.out.println(complement(l));
-
-        /*
-        boolean[] bytes = IntToByteArray(n);
-
-        for (int i=0; i<32; i++){
-            bytes[i] = !bytes[i];
-        }
-        System.out.println(BitArrToInteger(bytes) * 2);
-        */
-    }
-
     private static long complement(long num){
         long maxInt=(long)Math.pow(2, 32)-1;
         return maxInt - num;
@@ -2353,6 +2336,23 @@ public class Solution {
         countRepeatVisitors(nLog);
     }
 
+    public static void main(String[] args){
+
+        //AmazonTxProblem();
+
+        Scanner sc = new Scanner(System.in);
+        long l = sc.nextLong();
+        System.out.println(complement(l));
+
+        /*
+        boolean[] bytes = IntToByteArray(n);
+
+        for (int i=0; i<32; i++){
+            bytes[i] = !bytes[i];
+        }
+        System.out.println(BitArrToInteger(bytes) * 2);
+        */
+    }
 }
 
 class LogEntry{
@@ -2386,7 +2386,7 @@ class Queries{
     long data;
 }
 
-class TrainTime{
+class   TrainTime{
     TrainTime(char ch, int t){
         this.sign = ch;
         this.time = t;

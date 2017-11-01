@@ -1,5 +1,7 @@
 package Trees;// Java program to construct BST from given preorder traversal
 
+import apple.laf.JRSUIUtils;
+
 import java.util.*;
 
 // A binary tree node
@@ -153,6 +155,34 @@ class BinaryTree {
         System.out.println("----- Lowest Common Ancestor ------");
         System.out.println(lca(root, 7, 5).data);
     }
-}
 
-// This code has been contributed by Mayank Jaiswal
+    public static void main(String args[]) {
+        BinaryTree btree = new BinaryTree();
+        btree.UnitTest();
+    }
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     int data;
+     *     TreeNode left;
+     *     TreeNode right;
+     *     TreeNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+
+        public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+            if (t1 == null && t2 == null) return null;
+
+            int val = (t1 == null ? 0 : t1.data) + (t2 == null ? 0 : t2.data);
+            TreeNode newNode = new TreeNode(val);
+
+            newNode.left = mergeTrees(t1 == null ? null : t1.left, t2 == null ? null : t2.left);
+            newNode.right = mergeTrees(t1 == null ? null : t1.right, t2 == null ? null : t2.right);
+
+            return newNode;
+        }
+
+    }
+}
