@@ -1,7 +1,7 @@
-package ccinterview;
+package cci;
 
 import java.util.Scanner;
-import Utils.*;
+
 /**
  * Created by mashhur on 12/24/16.
  */

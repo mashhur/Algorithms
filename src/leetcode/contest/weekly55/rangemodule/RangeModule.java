@@ -1,4 +1,4 @@
-package leetcode.contest.weeklycontets55.rangemodule;
+package leetcode.contest.weekly55.rangemodule;
 
 import java.util.HashMap;
 import java.util.Map;

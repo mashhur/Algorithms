@@ -1,4 +1,4 @@
-package ccinterview;
+package cci;
 import java.util.*;
 /**
  * Created by mashhur on 2/12/17.

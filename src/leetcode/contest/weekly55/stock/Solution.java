@@ -1,4 +1,4 @@
-package leetcode.contest.weeklycontets55.stock;
+package leetcode.contest.weekly55.stock;
 
 /**
  * Created by mashhur on 10/22/17.

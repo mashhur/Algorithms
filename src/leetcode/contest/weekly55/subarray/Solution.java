@@ -1,7 +1,4 @@
-package leetcode.contest.weeklycontets55.subarray;
-
-import java.util.HashMap;
-import java.util.Map;
+package leetcode.contest.weekly55.subarray;
 
 /**
  * Created by mashhur on 10/24/17.
