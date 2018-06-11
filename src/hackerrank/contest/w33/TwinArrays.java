@@ -1,4 +1,4 @@
-package hackerrank.Contest.w33;
+package hackerrank.contest.w33;
 
 import java.util.*;
 

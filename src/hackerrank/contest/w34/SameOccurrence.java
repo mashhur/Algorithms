@@ -1,4 +1,4 @@
-package hackerrank.Contest.w34;
+package hackerrank.contest.w34;
 
 import java.util.Scanner;
 

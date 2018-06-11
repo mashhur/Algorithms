@@ -1,4 +1,4 @@
-package hackerrank.Contest.week35.threeDsurface;
+package hackerrank.contest.week35.threeDsurface;
 
 import java.util.Scanner;
 
@@ -17,6 +17,9 @@ public class ThreeDimentionSurface {
                 A[A_i][A_j] = in.nextInt();
             }
         }
+        // 1 1
+        // 1
+        // output: 6
         int result = surfaceArea(A, H, W);
         System.out.println(result);
         in.close();
@@ -37,7 +40,7 @@ public class ThreeDimentionSurface {
         // initial cost
         int cost = 6;
         if(A[i][j] > 1)
-            cost = A[i][j]*6 - (A[i][j]-1);
+            cost = A[i][j]*(6-2) + 2;
 
         // upper
         if(i-1 >= 0) {

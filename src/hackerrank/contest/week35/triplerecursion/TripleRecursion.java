@@ -1,4 +1,4 @@
-package hackerrank.Contest.week35.triplerecursion;
+package hackerrank.contest.week35.triplerecursion;
 
 import java.util.Scanner;
 

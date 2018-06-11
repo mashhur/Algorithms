@@ -1,4 +1,4 @@
-package hackerrank.Contest.RookiRank2;
+package hackerrank.contest.RookiRank2;
 
 import java.util.*;
 

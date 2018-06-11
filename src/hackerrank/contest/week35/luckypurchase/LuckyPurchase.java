@@ -1,4 +1,4 @@
-package hackerrank.Contest.week35.luckypurchase;
+package hackerrank.contest.week35.luckypurchase;
 
 import java.util.*;
 

@@ -91,8 +91,40 @@ public class Exercises {
     public static void main(String[] args){
         System.out.println("Main Run");
 
-        System.out.println(judgeCircle("UDLLRLDDRURU"));
+        //System.out.println(judgeCircle("UDLLRLDDRURU"));
+
+        //int[] shifts = {26,9,17}; // res: rpl
+        int[] shifts = {505870226,437526072,266740649,224336793,532917782,311122363,567754492,595798950,81520022,684110326,137742843,275267355,856903962,148291585,919054234,467541837,622939912,116899933,983296461,536563513};
+        System.out.println(shiftingLetters("mkgfzkkuxownxvfvxasy", shifts));
+        /*String i = "5";
+        String k = "5";
+        System.out.println(i == k);
+        System.out.println(i.equals(k));
+        */
     }
+
+    public static String shiftingLetters(String S, int[] shifts) {
+        if(S.length() != shifts.length)
+            return "";
+
+        // make shifts iteration count of every S index
+        String result = "";
+        long sum = 0;
+        for(int i=S.length()-1; i>=0; i--) {
+            char ch = S.charAt(i);
+            sum += shifts[i];
+            long shift = (sum % 26); // eng alphabet size
+            char chShifted = (char)(ch + (char)shift);
+            if(chShifted > 'z')
+                chShifted = (char)(chShifted - 'z' + 'a' - 1);
+
+            result = chShifted + result;
+        }
+
+        return result;
+    }
+
+
 
 
     // string solution

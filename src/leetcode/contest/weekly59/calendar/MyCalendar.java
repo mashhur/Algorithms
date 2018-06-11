@@ -79,25 +79,20 @@ public class MyCalendar {
         end = end - 1;
         if(start > end) return false;
 
-        int triple = 0;
+        int start_intersection = 0;
+        int end_intersection = 0;
         for (Map.Entry<Integer, Book> entry: map.entrySet()) {
 
             // date mismatch 1
             if(start <= entry.getValue().start && end > entry.getValue().start
                     && end <= entry.getValue().end) {
-                return false;
+                end_intersection++;
             }
 
             // date mismatch 2
             if(start >= entry.getValue().start && start < entry.getValue().end
                     && end > entry.getValue().end) {
-                triple++;
-            }
-
-
-            // date mismatch 3
-            if(start <= entry.getValue().start && end >= entry.getValue().end) {
-                triple++;
+                start_intersection++;
             }
 
             // double booking
@@ -105,7 +100,7 @@ public class MyCalendar {
                 return false;
             }
 
-            if(triple == 3)
+            if(start_intersection == 2 || end_intersection == 2)
                 return false;
         }
         map.put(map.size(), new Book(start, end));
