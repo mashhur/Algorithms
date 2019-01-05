@@ -1,7 +1,5 @@
 package Sorting;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.util.Scanner;
 
 /**
