@@ -3,16 +3,8 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-class Book {
-    int start;
-    int end;
-    int count;
-}
-
 public class MyCalendarTwo {
 
-    int min = 0;
-    int max = 0;
     private List<Book> bookings;
 
     public MyCalendarTwo() {
@@ -20,22 +12,25 @@ public class MyCalendarTwo {
     }
 
     public boolean book(int start, int end) {
-        if (start >= max || end <= min) {
-            //modifyBookingTable(start, end);
-            return true;
-        }
-
-        //if (checkIfCanbeBooked(start, end)) {
-        //    modifyBookingTable(start, end);
-        //    return true;
-        //}
-
-        return false;
+        // TODO
+        return true;
     }
 
     public static void main(String args[]) {
-        // Your MyCalendarTwo object will be instantiated and called as such:
         MyCalendarTwo calendar = new MyCalendarTwo();
-        System.out.println(calendar.book(10, 20));
+        /*
+        System.out.println(calendar.book(10,20)); // true
+        System.out.println(calendar.book(50,60)); // true
+        System.out.println(calendar.book(10,40)); // true
+        System.out.println(calendar.book(5, 15)); // false
+        System.out.println(calendar.book(5, 10)); // true
+        System.out.println(calendar.book(25,55)); // true
+        */
+        System.out.println(calendar.book(10,20)); // true
+        System.out.println(calendar.book(30,40)); // true
+        System.out.println(calendar.book(35,45)); // true
+        System.out.println(calendar.book(10,40)); // false
+        // [10,20] [30,40],[35,45] -> [10,40]
+        // [10,20->1], [30,35->1], [35,40->2], [40,45->1]
     }
 }
