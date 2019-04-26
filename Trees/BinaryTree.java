@@ -18,45 +18,6 @@ class TreeNode {
 
 class BinaryTree {
 
-    // The main function that constructs BST from pre[]
-    private TreeNode constructTree(int pre[], int size) {
-
-        // The first element of pre[] is always root
-        TreeNode root = new TreeNode(pre[0]);
-
-        Stack<TreeNode> s = new Stack<>();
-
-        // Push root
-        s.push(root);
-
-        // Iterate through rest of the size-1 items of given preorder array
-        for (int i = 1; i < size; ++i) {
-            TreeNode temp = null;
- 
-            /* Keep on popping while the next value is greater than
-             stack's top value. */
-            while (!s.isEmpty() && pre[i] > s.peek().data) {
-                temp = s.pop();
-            }
-
-            // Make this greater value as the right child and push it to the stack
-            if (temp != null) {
-                temp.right = new TreeNode(pre[i]);
-                s.push(temp.right);
-            }
-
-            // If the next value is less than the stack's top value, make this value
-            // as the left child of the stack's top node. Push the new node to stack
-            else {
-                temp = s.peek();
-                temp.left = new TreeNode(pre[i]);
-                s.push(temp.left);
-            }
-        }
-
-        return root;
-    }
-
     // A utility function to print inorder traversal of a Binary Tree
     private static void printInorder(TreeNode node) {
         if (node == null) {
@@ -68,7 +29,7 @@ class BinaryTree {
     }
 
     private static void Preorder(TreeNode root) {
-        if(root !=  null) {
+        if (root != null) {
             //Visit the node by Printing the node data
             System.out.printf("%d ", root.data);
             Preorder(root.left);
@@ -77,7 +38,7 @@ class BinaryTree {
     }
 
     private static void Postorder(TreeNode root) {
-        if(root !=  null) {
+        if (root != null) {
             Postorder(root.left);
             Postorder(root.right);
             //Visit the node by Printing the node data
@@ -86,22 +47,21 @@ class BinaryTree {
     }
 
     private static void LevelOrderTraversal(TreeNode startNode) {
-        Queue<TreeNode> queue=new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(startNode);
-        while(!queue.isEmpty())
-        {
-            TreeNode tempNode=queue.poll();
-            System.out.printf("%d ",tempNode.data);
-            if(tempNode.left!=null)
+        while (!queue.isEmpty()) {
+            TreeNode tempNode = queue.poll();
+            System.out.printf("%d ", tempNode.data);
+            if (tempNode.left != null)
                 queue.add(tempNode.left);
-            if(tempNode.right!=null)
+            if (tempNode.right != null)
                 queue.add(tempNode.right);
         }
     }
 
     private static int height(TreeNode root) {
-        if(root == null) return 0;
-        return 1+Math.max(height(root.left), height(root.right));
+        if (root == null) return 0;
+        return 1 + Math.max(height(root.left), height(root.right));
     }
 
     // lowest common ancestor
@@ -161,13 +121,52 @@ class BinaryTree {
         btree.UnitTest();
     }
 
+    // The main function that constructs BST from pre[]
+    private TreeNode constructTree(int pre[], int size) {
+
+        // The first element of pre[] is always root
+        TreeNode root = new TreeNode(pre[0]);
+
+        Stack<TreeNode> s = new Stack<>();
+
+        // Push root
+        s.push(root);
+
+        // Iterate through rest of the size-1 items of given preorder array
+        for (int i = 1; i < size; ++i) {
+            TreeNode temp = null;
+
+            /* Keep on popping while the next value is greater than
+             stack's top value. */
+            while (!s.isEmpty() && pre[i] > s.peek().data) {
+                temp = s.pop();
+            }
+
+            // Make this greater value as the right child and push it to the stack
+            if (temp != null) {
+                temp.right = new TreeNode(pre[i]);
+                s.push(temp.right);
+            }
+
+            // If the next value is less than the stack's top value, make this value
+            // as the left child of the stack's top node. Push the new node to stack
+            else {
+                temp = s.peek();
+                temp.left = new TreeNode(pre[i]);
+                s.push(temp.left);
+            }
+        }
+
+        return root;
+    }
+
     /**
      * Definition for a binary tree node.
      * public class TreeNode {
-     *     int data;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode(int x) { val = x; }
+     * int data;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode(int x) { val = x; }
      * }
      */
     class Solution {

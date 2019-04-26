@@ -1,24 +1,23 @@
 package Sorting;
 
-import java.math.BigInteger;
-
 /**
  * Created by mashhur on 1/30/17.
  */
 public class MergeSort {
 
+    static int nSwapCount = 0;
     private int[] array;
     private int[] tempMergArr;
     private int length;
 
-    public static void main(String a[]){
+    public static void main(String a[]) {
 
         //int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
         int[] inputArr = {2, 1, 3, 1, 2};
         //int[] inputArr = {1, 1, 1, 2, 2};
         MergeSort mms = new MergeSort();
         mms.sort(inputArr);
-        for(int i:inputArr){
+        for (int i : inputArr) {
             System.out.print(i);
             System.out.print(" ");
         }
@@ -43,7 +42,6 @@ public class MergeSort {
         }
     }
 
-    static int nSwapCount = 0;
     private void mergeParts(int lowerIndex, int middle, int higherIndex) {
 
         for (int i = lowerIndex; i <= higherIndex; i++) {

@@ -11,10 +11,11 @@ class Graph {
     public int idx;
     public List<Integer> nList = new ArrayList<>();
 
-    Graph(int idx){
+    Graph(int idx) {
         this.idx = idx;
     }
-    Graph(int idx, int nVal){
+
+    Graph(int idx, int nVal) {
         this.idx = idx;
         nList.add(nVal);
     }
@@ -22,20 +23,20 @@ class Graph {
 
 public class BishuGirlfriends {
 
-    public static void main(String args[] ) throws Exception {
+    public static void main(String args[]) throws Exception {
 
         //Scanner
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
         Map<Integer, Graph> nMap = new HashMap<>();
-        for (int i = 0; i < t-1; i++) {
+        for (int i = 0; i < t - 1; i++) {
             int u = sc.nextInt();
             int v = sc.nextInt();
-            if(nMap.containsKey(u)){
+            if (nMap.containsKey(u)) {
                 Graph gr = nMap.get(u);
                 gr.nList.add(v);
             } else {
-                nMap.put(u, new Graph(u,v));
+                nMap.put(u, new Graph(u, v));
             }
         }
 
@@ -49,11 +50,11 @@ public class BishuGirlfriends {
         System.out.println(nRet == -1 ? "Not found." : nRet);
     }
 
-    private static int getCountryOfGirl(Map<Integer, Graph> nMap, List<Integer> nList){
-        for (Map.Entry<Integer, Graph> entry : nMap.entrySet()){
+    private static int getCountryOfGirl(Map<Integer, Graph> nMap, List<Integer> nList) {
+        for (Map.Entry<Integer, Graph> entry : nMap.entrySet()) {
             List<Integer> nEntryList = entry.getValue().nList;
-            for (int item : nEntryList){
-                if(nList.contains(item)){
+            for (int item : nEntryList) {
+                if (nList.contains(item)) {
                     return item;
                 }
             }

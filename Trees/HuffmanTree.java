@@ -9,7 +9,10 @@ import java.util.PriorityQueue;
 
 abstract class HuffmanTree implements Comparable<HuffmanTree> {
     public final int frequency; // the frequency of this tree
-    public HuffmanTree(int freq) { frequency = freq; }
+
+    public HuffmanTree(int freq) {
+        frequency = freq;
+    }
 
     // compares on the frequency
     public int compareTo(HuffmanTree tree) {
@@ -82,7 +85,7 @@ class HuffmanCode {
         }
     }
 
-    public static void HuffmanTreeTest(String[] args){
+    public static void HuffmanTreeTest(String[] args) {
 
         String test = "this is an example for huffman encoding";
         test = "hackerrank";

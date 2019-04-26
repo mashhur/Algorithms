@@ -10,6 +10,18 @@ public class MyCalendarImproved {
         calendar = new TreeMap<>();
     }
 
+    public static void main(String args[]) {
+        MyCalendarImproved calendar = new MyCalendarImproved();
+        //System.out.println(calendar.book(10,20)); // true
+        //System.out.println(calendar.book(15,25)); // false
+        //System.out.println(calendar.book(20,30)); // true
+
+        System.out.println(calendar.book(47, 50)); // true
+        System.out.println(calendar.book(43, 51)); // false
+
+
+    }
+
     public boolean book(int start, int end) {
         assert start < end;
 
@@ -23,17 +35,5 @@ public class MyCalendarImproved {
 
         calendar.put(start, end);
         return true;
-    }
-
-    public static void main (String args[]) {
-        MyCalendarImproved calendar = new MyCalendarImproved();
-        //System.out.println(calendar.book(10,20)); // true
-        //System.out.println(calendar.book(15,25)); // false
-        //System.out.println(calendar.book(20,30)); // true
-
-        System.out.println(calendar.book(47,50)); // true
-        System.out.println(calendar.book(43,51)); // false
-
-
     }
 }

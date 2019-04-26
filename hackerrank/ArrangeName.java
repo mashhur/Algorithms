@@ -2,23 +2,23 @@ package hackerrank;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
 import java.util.Stack;
 
 /**
  * Created by mashhur on 1/23/17.
  */
 
-class Name{
-    String name ;
+class Name {
+    String name;
     char cStart, cEnd;
-    Name(String name, char cStart, char cEnd){
+    Name next;
+
+    Name(String name, char cStart, char cEnd) {
         next = null;
         this.name = name;
         this.cStart = cStart;
         this.cEnd = cEnd;
     }
-    Name next;
 }
 
 public class ArrangeName {
@@ -45,10 +45,10 @@ public class ArrangeName {
 
         Name head = null;
         String[] strName = {"Raymond", "Nora", "Daniel", "Louie", "Peter", "Esteban"};
-        for (int i=0; i<strName.length; i++){
+        for (int i = 0; i < strName.length; i++) {
             char[] chNameArr = strName[i].toCharArray();
-            Name node = new Name(strName[i], chNameArr[0], chNameArr[chNameArr.length-1]);
-            if(head == null)
+            Name node = new Name(strName[i], chNameArr[0], chNameArr[chNameArr.length - 1]);
+            if (head == null)
                 head = node;
             else {
                 insertNode(head, node);
@@ -59,16 +59,16 @@ public class ArrangeName {
         display(head);
     }
 
-    static void insertNode(Name head, Name node){
+    static void insertNode(Name head, Name node) {
         Name nCurrNode = head;
-        while (nCurrNode.next != null){
+        while (nCurrNode.next != null) {
             nCurrNode = nCurrNode.next;
         }
         nCurrNode.next = node;
     }
 
-    public static void display(Name node){
-        while (node != null){
+    public static void display(Name node) {
+        while (node != null) {
             System.out.print(node.name + " ");
             node = node.next;
         }

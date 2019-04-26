@@ -12,30 +12,31 @@ public class CarParking implements IParkable {
     private int nCapacity;
     private int nPrice;
 
-    void CarParking(){
+    void CarParking() {
         nCarList = new ArrayList<>();
     }
 
-    public void SetCapacity(int nVal){
+    public void SetCapacity(int nVal) {
         this.nCapacity = nVal;
     }
 
-    public int GetCapacity(){
+    public int GetCapacity() {
         return nCapacity;
     }
 
-    public int GetFreeLots(){
-        return nCapacity-nCarList.size();
+    public int GetFreeLots() {
+        return nCapacity - nCarList.size();
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return nCapacity == nCarList.size();
     }
 
-    public void SetPrice(int price){
+    public void SetPrice(int price) {
         this.nPrice = price;
     }
-    public int GetPrice(){
+
+    public int GetPrice() {
         return nPrice;
     }
 }
@@ -45,15 +46,16 @@ class Car {
     int nModel;
     int nEngineProperty;
 
-    boolean Pay(){
+    boolean Pay() {
         // check price and pay
         return true;
     }
 
-    void EnterPark(){
+    void EnterPark() {
         // if parking lot is not full
     }
-    void ExitPark(){
+
+    void ExitPark() {
         // if after paying
     }
 }

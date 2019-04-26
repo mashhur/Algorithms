@@ -8,37 +8,38 @@ import java.util.*;
 public class Greedy {
 
     // Greed Challenge
-    private static void GridChallenge(){
+    private static void GridChallenge() {
         Scanner sc = new Scanner(System.in);
         int nT = sc.nextInt();
-        while (nT>0){
+        while (nT > 0) {
             nT--;
 
-            int nSz = sc.nextInt(); sc.nextLine();
+            int nSz = sc.nextInt();
+            sc.nextLine();
             char[][] nArr = new char[nSz][nSz];
             boolean bCont = true;
-            for (int i=0; i<nSz; i++){          // Column
+            for (int i = 0; i < nSz; i++) {          // Column
                 // row
                 nArr[i] = sc.nextLine().toCharArray();
 
                 Arrays.sort(nArr[i]);
                 bCont = IsRowBalanced(nArr[i]);
-                if(!bCont)
+                if (!bCont)
                     break;
             }
-            if(!bCont)
+            if (!bCont)
                 continue;
 
-            if(IsColBalanced(nArr))
+            if (IsColBalanced(nArr))
                 System.out.println("YES");
             else
                 System.out.println("NO");
         }
     }
 
-    private static boolean IsRowBalanced(char[] nArr){
-        for (int i=1; i<nArr.length; i++){
-            if(nArr[i] < nArr[i-1]) return false;
+    private static boolean IsRowBalanced(char[] nArr) {
+        for (int i = 1; i < nArr.length; i++) {
+            if (nArr[i] < nArr[i - 1]) return false;
         }
         return true;
     }
@@ -54,13 +55,13 @@ public class Greedy {
 
 
     // Priyanka & Toys
-    private static void PriyankaAndToys(){
+    private static void PriyankaAndToys() {
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
 
         LinkedList<Integer> nList = new LinkedList<>();
-        int i=0;
-        while (i<nSz){
+        int i = 0;
+        while (i < nSz) {
             nList.add(sc.nextInt());
             i++;
         }
@@ -69,55 +70,54 @@ public class Greedy {
         Collections.sort(nList);
 
         int nListSz = nList.size();
-        for (int k=1; k<nListSz; k++){
-            int nVal = nList.get(k-1);
-            while(nList.get(k) <= nVal+4) {
+        for (int k = 1; k < nListSz; k++) {
+            int nVal = nList.get(k - 1);
+            while (nList.get(k) <= nVal + 4) {
                 nList.remove(k);
                 nListSz--;
-                if(k==nListSz) break;
+                if (k == nListSz) break;
             }
         }
         System.out.print(nList.size());
     }
 
     // Largest Permutation array
-    private static void MaxPermutation(){
+    private static void MaxPermutation() {
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
         int nSwaps = sc.nextInt();
 
         int[] nArr = new int[nSz];
-        int i=0;
-        while (i<nSz){
+        int i = 0;
+        while (i < nSz) {
             nArr[i] = sc.nextInt();
             i++;
         }
 
         int iSwap = 0;
-        int k=0;
-        while (iSwap < nSwaps){
+        int k = 0;
+        while (iSwap < nSwaps) {
             // 1. Number of swaps
             // 2. get a max from Sorted List
             // 3. swap with current index
             int idx = GetMaxIdx(nArr, k);
-            if(idx != k) {
+            if (idx != k) {
                 swap(nArr, idx, k);
                 iSwap++;
             }
             //System.out.println("SWAP: " + k + ", Value: " + nArr[k]);
             k++;
-            if(k==nSz) break;
+            if (k == nSz) break;
         }
 
         print_array(nArr, nSz);
     }
 
-    private static int GetMaxIdx(int[] nArr, int nStart){
+    private static int GetMaxIdx(int[] nArr, int nStart) {
         int idx = 0;
         int nMax = Integer.MIN_VALUE;
-        for (int i=nStart; i<nArr.length; i++){
-            if(nMax < nArr[i])
-            {
+        for (int i = nStart; i < nArr.length; i++) {
+            if (nMax < nArr[i]) {
                 nMax = nArr[i];
                 idx = i;
             }
@@ -125,27 +125,27 @@ public class Greedy {
         return idx;
     }
 
-    private static void swap(int[] nArr, int idx1, int idx2){
+    private static void swap(int[] nArr, int idx1, int idx2) {
         int nTemp = nArr[idx1];
         nArr[idx1] = nArr[idx2];
         nArr[idx2] = nTemp;
     }
 
-    private static void print_array(int[] nArr, int nSz){
-        for (int i=0; i<nSz; i++){
+    private static void print_array(int[] nArr, int nSz) {
+        for (int i = 0; i < nSz; i++) {
             System.out.print(nArr[i] + " ");
         }
     }
 
 
     // Flowers
-    private static void Flowers(){
+    private static void Flowers() {
         Scanner sc = new Scanner(System.in);
         int nFlower = sc.nextInt();
         int nPeople = sc.nextInt();
 
         int[] nArr = new int[nFlower]; // price listƒ
-        for (int i=0; i<nFlower; i++){
+        for (int i = 0; i < nFlower; i++) {
             nArr[i] = sc.nextInt();
         }
 
@@ -153,16 +153,16 @@ public class Greedy {
 
         // initialize people list
         List<FlowerOwner> nPplList = new ArrayList<FlowerOwner>();
-        for (int p=0; p<nPeople; p++) {
+        for (int p = 0; p < nPeople; p++) {
             nPplList.add(new FlowerOwner(p));
         }
 
         int nSum = 0;
-        for (int i=nFlower-1; i>=0; i--){
+        for (int i = nFlower - 1; i >= 0; i--) {
             // get minimum flower owner
             Collections.sort(nPplList);
             FlowerOwner item = nPplList.get(0);
-            int nCurrSum = (item.nFlowers.size() +1)*nArr[i];
+            int nCurrSum = (item.nFlowers.size() + 1) * nArr[i];
             nSum += nCurrSum;
             item.nFlowers.add(nCurrSum);
         }
@@ -170,7 +170,7 @@ public class Greedy {
     }
 
     // Meeting Point, used Manhattan Distance
-    private static void MeetingPoint(){
+    private static void MeetingPoint() {
         Scanner sc = new Scanner(System.in);
         long nSz = sc.nextLong();
 
@@ -179,8 +179,8 @@ public class Greedy {
 
         double nCenterX = 0;
         double nCenterY = 0;
-        long i=0;
-        while (i<nSz){
+        long i = 0;
+        while (i < nSz) {
             i++;
             long x = sc.nextLong();
             long y = sc.nextLong();
@@ -190,32 +190,32 @@ public class Greedy {
             nCenterY += y;
         }
 
-        if(nSz<=1){
+        if (nSz <= 1) {
             System.out.println(0);
             return;
         }
 
-        nCenterX = nCenterX/nSz;
-        nCenterY = nCenterY/nSz;
+        nCenterX = nCenterX / nSz;
+        nCenterY = nCenterY / nSz;
         long nMinIdx = 0;
         double nMinDist = Double.MAX_VALUE;
-        for (Map.Entry<Long, Coord> item: nCoords.entrySet()) {
+        for (Map.Entry<Long, Coord> item : nCoords.entrySet()) {
             double xDelta = item.getValue().x - nCenterX;
             double yDelta = item.getValue().y - nCenterY;
-            double nDist = Math.sqrt(xDelta*xDelta + yDelta*yDelta);
-            if(nMinDist > nDist) {
+            double nDist = Math.sqrt(xDelta * xDelta + yDelta * yDelta);
+            if (nMinDist > nDist) {
                 nMinDist = nDist;
                 nMinIdx = item.getKey();
             }
         }
 
         Coord nCurrCoord = nCoords.get(nMinIdx);
-        long nSum=0;
-        for (Map.Entry<Long, Coord> item: nCoords.entrySet()) {
+        long nSum = 0;
+        for (Map.Entry<Long, Coord> item : nCoords.entrySet()) {
 
-            long nItemXVal = Math.abs(item.getValue().x-nCurrCoord.x);
-            long nItemYVal = Math.abs(item.getValue().y-nCurrCoord.y);
-            long nDelta = (nItemXVal > nItemYVal)? nItemXVal : nItemYVal;
+            long nItemXVal = Math.abs(item.getValue().x - nCurrCoord.x);
+            long nItemYVal = Math.abs(item.getValue().y - nCurrCoord.y);
+            long nDelta = (nItemXVal > nItemYVal) ? nItemXVal : nItemYVal;
 
             nSum += nDelta;
         }
@@ -230,8 +230,8 @@ public class Greedy {
         int nK = sc.nextInt();
 
         int[] nArr = new int[nSz];
-        int i=0;
-        while (i<nSz){
+        int i = 0;
+        while (i < nSz) {
             nArr[i] = sc.nextInt();
             i++;
         }
@@ -243,28 +243,28 @@ public class Greedy {
 
         // O(N) solution
         int nMin = Integer.MAX_VALUE;
-        for (int n=0; n<=nSz-nK; n++) {
-            int nDelta = nArr[n+nK-1] - nArr[n];
-            if(nMin > nDelta) nMin = nDelta;
+        for (int n = 0; n <= nSz - nK; n++) {
+            int nDelta = nArr[n + nK - 1] - nArr[n];
+            if (nMin > nDelta) nMin = nDelta;
         }
         System.out.println(nMin);
     }
 
     // Mark and Toys
     public static void MarkAndToys() {
-        Scanner stdin=new Scanner(System.in);
-        int n=stdin.nextInt(),k=stdin.nextInt();
+        Scanner stdin = new Scanner(System.in);
+        int n = stdin.nextInt(), k = stdin.nextInt();
         int prices[] = new int[n];
-        for(int i=0;i<n;i++)
-            prices[i]=stdin.nextInt();
+        for (int i = 0; i < n; i++)
+            prices[i] = stdin.nextInt();
 
         Arrays.sort(prices);
         int nCount = 0;
         long nSum = 0;
 
-        while (nSum < k){
+        while (nSum < k) {
             nSum += prices[nCount];
-            if(nSum < k)
+            if (nSum < k)
                 nCount++;
         }
 
@@ -272,10 +272,10 @@ public class Greedy {
     }
 
     // Two arrays
-    public static void TwoArrays(){
+    public static void TwoArrays() {
         Scanner sc = new Scanner(System.in);
         int nT = sc.nextInt();
-        while (nT>0) {
+        while (nT > 0) {
             nT--;
             int nSz = sc.nextInt();
             int nK = sc.nextInt();
@@ -303,10 +303,10 @@ public class Greedy {
     }
 
     // Jim and orders
-    public static void JimAndOrder(){
+    public static void JimAndOrder() {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        if(n> 1000 || n<=0) return;
+        if (n > 1000 || n <= 0) return;
 
         int n_key = 0;
         ArrayList<Order> nList = new ArrayList<>();
@@ -316,21 +316,21 @@ public class Greedy {
                 return o1.n_order - o2.n_order;
             }
         };
-        while (n>0){
+        while (n > 0) {
             n--;
             n_key++;
             int n_order = sc.nextInt();
             int n_time = sc.nextInt();
-            if(n_order > 1000000 || n_order<=0) return;
-            if(n_time  > 1000000 || n_time <=0) return;
+            if (n_order > 1000000 || n_order <= 0) return;
+            if (n_time > 1000000 || n_time <= 0) return;
             nList.add(new Order(n_key, n_order + n_time));
         }
         Collections.sort(nList, comparator);
-        for (int i=0; i<n_key; i++)
+        for (int i = 0; i < n_key; i++)
             System.out.print(nList.get(i).n_key + " ");
     }
 
-    public static void UnitTest(){
+    public static void UnitTest() {
         //GridChallenge();
         //PriyankaAndToys();
         //MaxPermutation();
@@ -341,63 +341,63 @@ public class Greedy {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int p = in.nextInt();
-        for(int a0 = 0; a0 < p; a0++){
+        for (int a0 = 0; a0 < p; a0++) {
             int n = in.nextInt();
             System.out.println(isPrime(n) == true ? "Prime" : "Not prime");
         }
     }
 
-    static boolean isPrime(int num){
-        if(num < 2) return false;
-        for(int i=2; i<=Math.sqrt(num); i++){
-            if(num % i == 0) return false;
+    static boolean isPrime(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
         }
         return true;
     }
 }
 
-class Coord{
-    Coord(long x, long y){
+class Coord {
+    long x, y;
+
+    Coord(long x, long y) {
         this.x = x;
         this.y = y;
     }
-    long x,y;
 }
 
-class FlowerOwner implements Comparable<FlowerOwner>{
-    FlowerOwner(int i){
+class FlowerOwner implements Comparable<FlowerOwner> {
+    int idx;
+    List<Integer> nFlowers;
+    FlowerOwner(int i) {
         this.idx = i;
         nFlowers = new ArrayList<>();
     }
 
-    int idx;
-    List<Integer> nFlowers;
-
     @Override
-    public int compareTo(FlowerOwner o1){
+    public int compareTo(FlowerOwner o1) {
         return nFlowers.size() - o1.nFlowers.size();
     }
 }
 
-class Item implements Comparable<Item>{
-    Item(int i, int val){
+class Item implements Comparable<Item> {
+    int idx;
+    int nVal;
+    Item(int i, int val) {
         this.idx = i;
         this.nVal = val;
     }
-    int idx;
-    int nVal;
 
     @Override
-    public int compareTo(Item o1){
+    public int compareTo(Item o1) {
         return o1.nVal - this.nVal;
     }
 }
 
 class Order {
-    Order(int key, int sum){
+    int n_key;
+    int n_order;
+    Order(int key, int sum) {
         this.n_order = sum;
         this.n_key = key;
     }
-    int n_key;
-    int n_order;
 }

@@ -6,6 +6,8 @@ package Trees;
 
 public class CommonAncestor {
 
+    static Node root;
+
     public static void main(String args[]) {
         int[] nArr = {7, 5, 6, 3, 1, 2, 4};
         int node1 = 6;
@@ -16,8 +18,6 @@ public class CommonAncestor {
         System.out.println("Node 1 level: " + (getLevel(root, node1) - 1));
         System.out.println("Node 2 level: " + (getLevel(root, node2) - 1));
     }
-
-    static Node root;
 
     public static void InitBinaryTree(int[] values) {
         for (int item : values) {

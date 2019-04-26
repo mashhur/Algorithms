@@ -9,6 +9,39 @@ import java.util.Stack;
 public class DFS {
     boolean bVisitedArr[];
 
+    public static void main(String[] args) {
+        /*
+        AdjacencyMatrix nAdj = new AdjacencyMatrix(5);
+        nAdj.addEdge(0, 1);
+        nAdj.addEdge(0, 4);
+        nAdj.addEdge(1, 2);
+        nAdj.addEdge(1, 3);
+        nAdj.addEdge(1, 4);
+        nAdj.addEdge(2, 3);
+        nAdj.addEdge(3, 4);
+
+        nAdj.print();
+        System.out.println();
+        DFS dfs = new DFS();
+        dfs.traverse(nAdj, 0);
+        */
+
+        AdjacencyList nAdjList = new AdjacencyList(5, false);
+        nAdjList.addEdge(0, 1);
+        nAdjList.addEdge(0, 4);
+        nAdjList.addEdge(1, 2);
+        nAdjList.addEdge(1, 3);
+        nAdjList.addEdge(1, 4);
+        nAdjList.addEdge(2, 3);
+        nAdjList.addEdge(3, 4);
+
+        nAdjList.print();
+        System.out.println();
+
+        DFS dfs = new DFS();
+        dfs.traverse(nAdjList, 0);
+    }
+
     public void traverse(AdjacencyMatrix nAdjMatrix, int idx) {
         Stack<Integer> stack = new Stack<>();
         bVisitedArr = new boolean[nAdjMatrix.size()];
@@ -47,38 +80,5 @@ public class DFS {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        /*
-        AdjacencyMatrix nAdj = new AdjacencyMatrix(5);
-        nAdj.addEdge(0, 1);
-        nAdj.addEdge(0, 4);
-        nAdj.addEdge(1, 2);
-        nAdj.addEdge(1, 3);
-        nAdj.addEdge(1, 4);
-        nAdj.addEdge(2, 3);
-        nAdj.addEdge(3, 4);
-
-        nAdj.print();
-        System.out.println();
-        DFS dfs = new DFS();
-        dfs.traverse(nAdj, 0);
-        */
-
-        AdjacencyList nAdjList = new AdjacencyList(5, false);
-        nAdjList.addEdge(0, 1);
-        nAdjList.addEdge(0, 4);
-        nAdjList.addEdge(1, 2);
-        nAdjList.addEdge(1, 3);
-        nAdjList.addEdge(1, 4);
-        nAdjList.addEdge(2, 3);
-        nAdjList.addEdge(3, 4);
-
-        nAdjList.print();
-        System.out.println();
-
-        DFS dfs = new DFS();
-        dfs.traverse(nAdjList, 0);
     }
 }

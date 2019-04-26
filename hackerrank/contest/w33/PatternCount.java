@@ -12,17 +12,17 @@ public class PatternCount {
         char[] chArr = s.toCharArray();
         boolean bOne = false;
         boolean bZero = false;
-        for (int i=0; i<chArr.length; i++) {
-            if(chArr[i] == '1') {
-                if(!bOne)
+        for (int i = 0; i < chArr.length; i++) {
+            if (chArr[i] == '1') {
+                if (!bOne)
                     bOne = true;
                 else {
                     if (bZero)
                         count++;
                 }
                 bZero = false;
-            } else if(chArr[i] == '0') {
-                if(bOne)
+            } else if (chArr[i] == '0') {
+                if (bOne)
                     bZero = true;
             } else {
                 bOne = false;
@@ -32,6 +32,7 @@ public class PatternCount {
 
         return count;
     }
+
     /*
     4
     100001abc101
@@ -42,7 +43,7 @@ public class PatternCount {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int q = in.nextInt();
-        for(int a0 = 0; a0 < q; a0++){
+        for (int a0 = 0; a0 < q; a0++) {
             String s = in.next();
             int result = patternCount(s);
             System.out.println(result);

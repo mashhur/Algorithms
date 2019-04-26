@@ -8,7 +8,7 @@ public class StepsToZero {
     // Save <Number, Steps>
     private HashMap<Integer, Integer> memory;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         StepsToZero instance = new StepsToZero();
         System.out.println(instance.solution("011100"));

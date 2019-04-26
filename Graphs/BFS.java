@@ -11,49 +11,7 @@ import java.util.Queue;
 
 public class BFS {
 
-    public void traverse(AdjacencyMatrix nAdjMatrix, int idx) {
-        Queue<Integer> queue = new LinkedList<>();
-        boolean[] bVisitedArr = new boolean[nAdjMatrix.size()];
-
-        queue.add(idx);
-        bVisitedArr[idx] = true;
-
-        while (!queue.isEmpty()){
-            int n = queue.poll();
-            System.out.println("Visit : " + n);
-            for (int i = 0; i < nAdjMatrix.size(); i++){
-                int nVal = nAdjMatrix.getVertice(n, i);
-                if(nVal == 1 && bVisitedArr[i] == false){
-                    queue.add(i);
-                    bVisitedArr[i] = true;
-                }
-            }
-        }
-
-    }
-
-    public void traverse(AdjacencyList nAdjList, int idx){
-        Queue<Integer> queue = new LinkedList<>();
-        boolean[] bVisitedArr = new boolean[nAdjList.size()];
-
-        queue.add(idx);
-        bVisitedArr[idx] = true;
-
-        while (!queue.isEmpty()){
-            int n = queue.poll();
-            System.out.println("Visit : " + n);
-            List<Integer> nList = nAdjList.getVertice(n);
-            for (int i : nList){
-                if(bVisitedArr[i] == false){
-                    queue.add(i);
-                    bVisitedArr[i] = true;
-                }
-            }
-        }
-    }
-
-
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /*
         AdjacencyMatrix nAdj = new AdjacencyMatrix(5);
         nAdj.addEdge(0, 1);
@@ -84,5 +42,46 @@ public class BFS {
 
         BFS bfs = new BFS();
         bfs.traverse(nAdjList, 0);
+    }
+
+    public void traverse(AdjacencyMatrix nAdjMatrix, int idx) {
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] bVisitedArr = new boolean[nAdjMatrix.size()];
+
+        queue.add(idx);
+        bVisitedArr[idx] = true;
+
+        while (!queue.isEmpty()) {
+            int n = queue.poll();
+            System.out.println("Visit : " + n);
+            for (int i = 0; i < nAdjMatrix.size(); i++) {
+                int nVal = nAdjMatrix.getVertice(n, i);
+                if (nVal == 1 && bVisitedArr[i] == false) {
+                    queue.add(i);
+                    bVisitedArr[i] = true;
+                }
+            }
+        }
+
+    }
+
+    public void traverse(AdjacencyList nAdjList, int idx) {
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] bVisitedArr = new boolean[nAdjList.size()];
+
+        queue.add(idx);
+        bVisitedArr[idx] = true;
+
+        while (!queue.isEmpty()) {
+            int n = queue.poll();
+            System.out.println("Visit : " + n);
+            List<Integer> nList = nAdjList.getVertice(n);
+            for (int i : nList) {
+                if (bVisitedArr[i] == false) {
+                    queue.add(i);
+                    bVisitedArr[i] = true;
+                }
+            }
+        }
     }
 }

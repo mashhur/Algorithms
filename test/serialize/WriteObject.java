@@ -3,9 +3,9 @@ package test.serialize;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-public class WriteObject{
+public class WriteObject {
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
 
         Address address = new Address();
         address.setStreet("wall street");
@@ -29,7 +29,7 @@ public class WriteObject{
 
             System.out.println("Done");
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

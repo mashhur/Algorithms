@@ -4,7 +4,7 @@ package Containers;
  * Created by mashhur on 11/13/16.
  */
 
-public class Node<T>{
+public class Node<T> {
     public T data;
     public T key;
 

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 class MaxWindow {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size = scanner.nextInt();
         if (size <= 0) { // TODO: consider max 3000000000L value
@@ -31,7 +31,7 @@ class MaxWindow {
             if (pQueue.isEmpty() == false)
                 System.out.println(pQueue.peek());
             //if (pQueue.size() >= size)
-                //pQueue.peek()
+            //pQueue.peek()
             pQueue.add(stream);
         }
     }

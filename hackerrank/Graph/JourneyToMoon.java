@@ -26,11 +26,11 @@ public class JourneyToMoon {
 
         // init
         Map<Integer, Set<Integer>> nMat = new HashMap<>();
-        for (int i=0; i<nVertices; i++)
+        for (int i = 0; i < nVertices; i++)
             nMat.put(i, new HashSet<>());
 
         // connect edges
-        for (int i=0; i<nEdges; i++){
+        for (int i = 0; i < nEdges; i++) {
             int x = sc.nextInt();
             int y = sc.nextInt();
 
@@ -50,19 +50,19 @@ public class JourneyToMoon {
         Stack<Integer> stack = new Stack<>();
 
         for (int i = 0; i < nVertices; i++) {
-            if(bVisit[i] == true) {
+            if (bVisit[i] == true) {
                 continue;
             }
 
             stack.add(i);
             int nSize = 0;
-            while (!stack.isEmpty()){
+            while (!stack.isEmpty()) {
                 int idx = stack.pop();
                 bVisit[idx] = true;
                 nSize++;
                 Set<Integer> nSet = nMat.get(idx);
                 for (int item : nSet) {
-                    if(!bVisit[item]) {
+                    if (!bVisit[item]) {
                         stack.push(item);
                     }
                 }
@@ -76,9 +76,9 @@ public class JourneyToMoon {
         }*/
 
         int nSum = 0;
-        for (int i=0; i<nList.size(); i++){
+        for (int i = 0; i < nList.size(); i++) {
             int nCurrVal = nList.get(i);
-            for (int k=i+1; k<nList.size(); k++){
+            for (int k = i + 1; k < nList.size(); k++) {
                 nSum += (nCurrVal * nList.get(k));
                 //System.out.print("Multiply : " + nCurrVal + " * " + nList.get(k));
             }
@@ -87,8 +87,8 @@ public class JourneyToMoon {
 
     }
 
-    static void print(Map<Integer, Set<Integer>> nMap){
-        for (int i=0; i<nMap.size(); i++){
+    static void print(Map<Integer, Set<Integer>> nMap) {
+        for (int i = 0; i < nMap.size(); i++) {
             Set<Integer> nList = nMap.get(i);
             System.out.print("[" + i + "] ");
 
@@ -99,14 +99,13 @@ public class JourneyToMoon {
         }
     }
 
-    private static void JourneyToMoonUnion(){
+    private static void JourneyToMoonUnion() {
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
         int nCounties = sc.nextInt();
 
         Union union = new Union(nSz);
-        for (int i=0; i<nCounties; i++)
-        {
+        for (int i = 0; i < nCounties; i++) {
             union.connect(sc.nextInt(), sc.nextInt());
         }
         // sorting
@@ -118,19 +117,19 @@ public class JourneyToMoon {
 
         List<Integer> nList = new ArrayList<>();
         int nCounter = 1;
-        for (int i=1; i<union.id.length; i++) {
-            if(union.id[i-1] == union.id[i]) nCounter++;
+        for (int i = 1; i < union.id.length; i++) {
+            if (union.id[i - 1] == union.id[i]) nCounter++;
             else {
                 nList.add(nCounter);
-                nCounter=1;
+                nCounter = 1;
             }
         }
         nList.add(nCounter);
 
         long nSum = 0;
-        for (int i=0; i<nList.size(); i++){
+        for (int i = 0; i < nList.size(); i++) {
             //System.out.print(nList.get(i) + " ");
-            for (int k=i+1; k<nList.size(); k++) {
+            for (int k = i + 1; k < nList.size(); k++) {
                 nSum += (nList.get(i) * nList.get(k));
                 //System.out.println(nSum);
             }
@@ -140,31 +139,32 @@ public class JourneyToMoon {
     }
 }
 
-class Union{
+class Union {
     int[] id;
     int nUnion;
-    Union(int n){
+
+    Union(int n) {
         this.nUnion = n;
         id = new int[n];
-        for (int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
             id[i] = i;
     }
 
-    public void connect(int p, int q){
+    public void connect(int p, int q) {
         validate(p);
         validate(q);
-        if(id[p] == id[q]) return;
+        if (id[p] == id[q]) return;
 
         int pId = id[p];
         int qId = id[q];
-        for (int i=0; i<id.length; i++){
-            if(id[i] == pId) id[i] = qId;
+        for (int i = 0; i < id.length; i++) {
+            if (id[i] == pId) id[i] = qId;
         }
         nUnion--;
     }
 
-    private void validate(int n){
-        if(n<0 || n>id.length)
+    private void validate(int n) {
+        if (n < 0 || n > id.length)
             new IndexOutOfBoundsException();
     }
 

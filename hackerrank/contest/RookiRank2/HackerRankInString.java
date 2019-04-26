@@ -1,6 +1,7 @@
 package hackerrank.contest.RookiRank2;
 
-import java.util.*;
+import java.util.Scanner;
+
 /**
  * Created by mashhur on 2/11/17.
  */
@@ -12,18 +13,18 @@ public class HackerRankInString {
         int q = sc.nextInt();
 
         String sHack = "hackerrank";
-        for(int i = 0; i < q; i++){
+        for (int i = 0; i < q; i++) {
             String s = sc.next();
             System.out.println(isMatch(sHack, s) ? "YES" : "NO");
         }
     }
 
-    static boolean isMatch(String hack, String input){
+    static boolean isMatch(String hack, String input) {
         int nRevPos = 0;
-        for (int i=0; i<hack.length(); i++) {
+        for (int i = 0; i < hack.length(); i++) {
             char ch = hack.charAt(i);
             nRevPos = input.indexOf(ch, nRevPos);
-            if(nRevPos == -1)
+            if (nRevPos == -1)
                 return false;
             else
                 nRevPos++;

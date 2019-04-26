@@ -24,10 +24,14 @@ public class MyHasTable {
         }
     }
 
+    private static int getHashCode(int key) {
+        return key % MAX_SIZE;
+    }
+
     // put, update
     public void put(int key, int value) {
         int idx = getHashCode(key);
-        if(table[idx] == null)
+        if (table[idx] == null)
             table[idx] = new LinkedList();
         table[idx].put(new Node(key, value));
     }
@@ -35,11 +39,11 @@ public class MyHasTable {
     // get
     public int get(int key) throws Exception {
         int idx = getHashCode(key);
-        if(table[idx] == null) {
+        if (table[idx] == null) {
             throw new Exception("");
         }
 
-        return (int)table[idx].get(key).data;
+        return (int) table[idx].get(key).data;
     }
 
     // delete
@@ -50,12 +54,8 @@ public class MyHasTable {
     public void print() {
         for (int i = 0; i < MAX_SIZE; i++) {
             LinkedList list = table[i];
-            if(list != null)
+            if (list != null)
                 list.print();
         }
-    }
-
-    private static int getHashCode(int key) {
-        return key % MAX_SIZE;
     }
 }

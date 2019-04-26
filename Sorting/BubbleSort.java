@@ -35,10 +35,10 @@ public class BubbleSort {
 
         System.out.println("Array is sorted in " + numberOfSwaps + " swaps.");
         System.out.println("First Element: " + a[0]);
-        System.out.println("Last Element: " + a[a.length-1]);
+        System.out.println("Last Element: " + a[a.length - 1]);
     }
 
-    static void swap(int[] a, int i, int j){
+    static void swap(int[] a, int i, int j) {
         int nTemp = a[i];
         a[i] = a[j];
         a[j] = nTemp;

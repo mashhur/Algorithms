@@ -9,29 +9,30 @@ public class Edge {
     private Vertex toVertice;
     private int weight;
 
-    public Edge(Vertex from, Vertex to, int weight){
+    public Edge(Vertex from, Vertex to, int weight) {
         this.weight = weight;
         this.fromVertice = from;
         this.toVertice = to;
     }
 
-    public void setWeight(int weight){
-        this.weight = weight;
-    }
-
-    public int getWeight(){
+    public int getWeight() {
         return weight;
     }
 
-    public void setVertices(Vertex from, Vertex to){
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void setVertices(Vertex from, Vertex to) {
         this.fromVertice = from;
         this.toVertice = to;
     }
 
-    public Vertex getFromVertice(){
+    public Vertex getFromVertice() {
         return fromVertice;
     }
-    public Vertex getToVertice(){
+
+    public Vertex getToVertice() {
         return toVertice;
     }
 }

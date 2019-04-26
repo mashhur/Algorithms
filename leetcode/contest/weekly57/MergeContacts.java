@@ -41,28 +41,28 @@ public class MergeContacts {
 
     public static List<List<String>> accountsMerge(List<List<String>> accounts) {
 
-        for (int i=0; i<accounts.size(); i++) {
+        for (int i = 0; i < accounts.size(); i++) {
             List<String> account = accounts.get(i);
-            if(account.contains("delete"))
-                    continue;
+            if (account.contains("delete"))
+                continue;
 
-            for (int k=i+1; k<accounts.size(); k++) {
+            for (int k = i + 1; k < accounts.size(); k++) {
                 List<String> account_next = accounts.get(k);
 
                 // same account found
-                if(account_next.contains("delete") || account.get(0) != account_next.get(0))
+                if (account_next.contains("delete") || account.get(0) != account_next.get(0))
                     continue;
 
                 List<String> temp = new ArrayList<>(account);
                 boolean bMerge = false;
-                for (int j=1; j<account_next.size(); j++) { // index 0-> Name
-                    if(account.contains(account_next.get(j))) // delete
+                for (int j = 1; j < account_next.size(); j++) { // index 0-> Name
+                    if (account.contains(account_next.get(j))) // delete
                         bMerge = true;
                     else
                         temp.add(account_next.get(j));
                 }
 
-                if(bMerge) {
+                if (bMerge) {
                     Collections.sort(temp);
                     accounts.set(i, temp);
                     account_next.add("delete");
@@ -73,7 +73,7 @@ public class MergeContacts {
         Iterator<List<String>> iterator = accounts.iterator();
         while (iterator.hasNext()) {
             List<String> account = iterator.next();
-            if(account.contains("delete"))
+            if (account.contains("delete"))
                 iterator.remove();
         }
 

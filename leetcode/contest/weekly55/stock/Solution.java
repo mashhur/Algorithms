@@ -10,7 +10,7 @@ public class Solution {
         //int fee = 2;
         // answer: 8
 
-        int nArr[] = {1,3,7,5,10,3};
+        int nArr[] = {1, 3, 7, 5, 10, 3};
         int fee = 3;
         // answer: 6
 
@@ -44,30 +44,30 @@ public class Solution {
         int nMin = stock;
         int idx_max = 0;
         int idx_min = 0;
-        for (int i=0; i<prices.length; i++) {
+        for (int i = 0; i < prices.length; i++) {
             int price = prices[i];
 
-            if(nMax < price) {
+            if (nMax < price) {
                 nMax = price;
                 idx_max = i;
             }
-            if(nMin > price) {
+            if (nMin > price) {
                 nMin = price;
                 idx_min = i;
             }
 
             // continue in case of no profit
             // buy condition
-            if(didBuy == true) {
-                if(i < prices.length-1 && price <= prices[i+1])
+            if (didBuy == true) {
+                if (i < prices.length - 1 && price <= prices[i + 1])
                     continue;
 
                 // sell
-                if((price - fee - stock) == 0 && i < prices.length-1 && stock >= prices[i+1]) { // no profit
+                if ((price - fee - stock) == 0 && i < prices.length - 1 && stock >= prices[i + 1]) { // no profit
                     profit = (price - fee - stock) + profit;
                     didBuy = false;
                     System.out.println("SELL...");
-                } else if((price - fee - stock) > 0) { // have a profit
+                } else if ((price - fee - stock) > 0) { // have a profit
                     profit = (price - fee - stock) + profit;
                     didBuy = false;
                     System.out.println("SELL...");
@@ -75,7 +75,7 @@ public class Solution {
 
             } else {
                 // buy
-                if(i < prices.length-1 && price < prices[i+1]) {
+                if (i < prices.length - 1 && price < prices[i + 1]) {
                     stock = price;
                     didBuy = true;
                     System.out.println("BUY...");
@@ -92,8 +92,8 @@ public class Solution {
 
     public static int maxProfit2(int[] prices, int fee) {
         int maxProfit = 0;
-        for(int i = 1; i < prices.length; i++) {
-            maxProfit += Math.max(0, prices[i] - prices[i-1] - fee);
+        for (int i = 1; i < prices.length; i++) {
+            maxProfit += Math.max(0, prices[i] - prices[i - 1] - fee);
         }
         return maxProfit;
     }
@@ -108,7 +108,7 @@ public class Solution {
             System.out.println("###########");
             hold[i] = Math.max(hold[i - 1], notHold[i - 1] - prices[i - 1] - fee);
             notHold[i] = Math.max(notHold[i - 1], hold[i - 1] + prices[i - 1]);
-            System.out.println("Hold: " + hold[i-1] + "\nNot hold: " + notHold[i-1] + "\nPrice: "+ prices[i-1]);
+            System.out.println("Hold: " + hold[i - 1] + "\nNot hold: " + notHold[i - 1] + "\nPrice: " + prices[i - 1]);
         }
 
         return notHold[l];

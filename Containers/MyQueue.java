@@ -1,19 +1,20 @@
 package Containers;
+
 import sun.awt.Mutex;
 
 /**
  * Created by mashhur on 11/12/16.
  */
 public class MyQueue<Object> {
+    Mutex mutex = new Mutex();
     private long nSize = 0;
     private Node<Object> root;
     private Node<Object> tail;
-    Mutex mutex = new Mutex();
 
     public void put(Node node) {
         mutex.lock();
         nSize++;
-        if(root == null) {
+        if (root == null) {
             root = node;
             tail = root;
         } else {
@@ -28,7 +29,7 @@ public class MyQueue<Object> {
 
     public Node pop() {
         mutex.lock();
-        if(root == null) return null;
+        if (root == null) return null;
 
         nSize--;
         Node nRet = root;
@@ -45,7 +46,7 @@ public class MyQueue<Object> {
     public void print() {
         mutex.lock();
         Node nCurr = root;
-        while (nCurr != null){
+        while (nCurr != null) {
             System.out.println("Node data : " + nCurr.data);
             nCurr = nCurr.next;
         }

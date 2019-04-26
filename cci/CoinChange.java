@@ -1,5 +1,7 @@
 package cci;
-import java.util.*;
+
+import java.util.Scanner;
+
 /**
  * Created by mashhur on 2/12/17.
  */
@@ -10,8 +12,8 @@ public class CoinChange {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int m = in.nextInt();
-        int coins[] = new int[m];
-        for(int coins_i=0; coins_i < m; coins_i++){
+        int[] coins = new int[m];
+        for (int coins_i = 0; coins_i < m; coins_i++) {
             coins[coins_i] = in.nextInt();
         }
     }

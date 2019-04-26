@@ -7,17 +7,19 @@ import java.util.Scanner;
  */
 public class QuickSort {
 
+    static int nSwaps;
+
     /*
-    * Quicksort 1 Problem of hackerrank
-    */
-    public static void main(String args[]){
+     * Quicksort 1 Problem of hackerrank
+     */
+    public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
 
         int[] nArr = new int[nSz];
 
-        int i=0;
-        while (i<nSz){
+        int i = 0;
+        while (i < nSz) {
             nArr[i] = sc.nextInt();
             i++;
         }
@@ -31,15 +33,15 @@ public class QuickSort {
         printArray(ar);
     }
 
-    private static void partition(int[] ar, int left, int right){
+    private static void partition(int[] ar, int left, int right) {
         int pivot = ar[left + (right - left) / 2];
         int i = left;
         int j = right;
 
-        while (i <= j){
+        while (i <= j) {
             while (ar[i] < pivot)
                 i++;
-            while(ar[j] > pivot)
+            while (ar[j] > pivot)
                 j--;
 
             if (i <= j) {
@@ -49,18 +51,17 @@ public class QuickSort {
             }
         }
 
-        if(left < j) {
+        if (left < j) {
             partition(ar, left, j);
         }
-        if(i < right)
+        if (i < right)
             partition(ar, i, right);
 
         //printArray(ar, left, right);
     }
 
-    static int nSwaps;
-    private static void swap(int[] ar, int n, int k){
-        if(ar[n] == ar[k]) return;
+    private static void swap(int[] ar, int n, int k) {
+        if (ar[n] == ar[k]) return;
 
         int nVal = ar[n];
         ar[n] = ar[k];
@@ -69,23 +70,23 @@ public class QuickSort {
     }
 
     private static void printArray(int[] ar) {
-        for(int n: ar){
-            System.out.print(n+" ");
+        for (int n : ar) {
+            System.out.print(n + " ");
         }
         System.out.println();
     }
 
     /*
-    * Quicksort 2 Problem of hackerrank
-    */
-    public static void TestQuickSort2(){
+     * Quicksort 2 Problem of hackerrank
+     */
+    public static void TestQuickSort2() {
         Scanner sc = new Scanner(System.in);
         int nSz = sc.nextInt();
 
         int[] nArr = new int[nSz];
 
-        int i=0;
-        while (i<nSz){
+        int i = 0;
+        while (i < nSz) {
             nArr[i] = sc.nextInt();
             i++;
         }
@@ -97,15 +98,15 @@ public class QuickSort {
         partition2(ar, 0, ar.length - 1);
     }
 
-    private static void partition2(int[] ar, int left, int right){
+    private static void partition2(int[] ar, int left, int right) {
         int pivot = ar[left + (right - left) / 2];
         int i = left;
         int j = right;
 
-        while (i <= j){
+        while (i <= j) {
             while (ar[i] < pivot)
                 i++;
-            while(ar[j] > pivot)
+            while (ar[j] > pivot)
                 j--;
 
             if (i <= j) {
@@ -115,11 +116,11 @@ public class QuickSort {
             }
         }
 
-        if(left < j) {
+        if (left < j) {
             printArray(ar, left, j);
             partition(ar, left, j);
         }
-        if(i < right){
+        if (i < right) {
             printArray(ar, i, right);
             partition(ar, i, right);
         }
@@ -128,8 +129,8 @@ public class QuickSort {
     }
 
     private static void printArray(int[] ar, int lo, int ri) {
-        for(int n=lo; n<=ri; n++) {
-            System.out.print(ar[n]+" ");
+        for (int n = lo; n <= ri; n++) {
+            System.out.print(ar[n] + " ");
         }
         System.out.println();
     }

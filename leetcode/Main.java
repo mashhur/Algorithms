@@ -16,7 +16,7 @@ public class Main {
     // straightforward way
     public static void NumberComplement(int n) {
         boolean bStart = false;
-        for (int i=31; i>=0; i--) {
+        for (int i = 31; i >= 0; i--) {
             if ((n & 1 << i) != 0)
                 bStart = true;
             if (bStart)

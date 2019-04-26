@@ -1,7 +1,6 @@
 package Graphs;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -11,10 +10,9 @@ import java.util.List;
  */
 public class AdjacencyList {
 
+    List<Integer>[] nAdjMap;
     private int v;
     private boolean isDirected;
-
-    List<Integer>[] nAdjMap;
 
     public AdjacencyList(int vertexes, boolean bDirected) {
         if (vertexes <= 0) return;
@@ -24,6 +22,22 @@ public class AdjacencyList {
         for (int i = 0; i < vertexes; i++) {
             nAdjMap[i] = new ArrayList<Integer>();
         }
+    }
+
+    public static void main(String[] args) {
+        AdjacencyList nAdj = new AdjacencyList(5, false);
+        nAdj.addEdge(0, 1);
+        nAdj.addEdge(0, 4);
+        nAdj.addEdge(1, 2);
+        nAdj.addEdge(1, 3);
+        nAdj.addEdge(1, 4);
+        nAdj.addEdge(2, 3);
+        nAdj.addEdge(3, 4);
+
+        nAdj.print();
+
+        nAdj.removeEdge(1, 4);
+        nAdj.print();
     }
 
     public List<Integer> getVertice(int n) {
@@ -67,22 +81,6 @@ public class AdjacencyList {
                 System.out.print(" " + k);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AdjacencyList nAdj = new AdjacencyList(5, false);
-        nAdj.addEdge(0, 1);
-        nAdj.addEdge(0, 4);
-        nAdj.addEdge(1, 2);
-        nAdj.addEdge(1, 3);
-        nAdj.addEdge(1, 4);
-        nAdj.addEdge(2, 3);
-        nAdj.addEdge(3, 4);
-
-        nAdj.print();
-
-        nAdj.removeEdge(1, 4);
-        nAdj.print();
     }
 }
 

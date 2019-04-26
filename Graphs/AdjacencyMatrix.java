@@ -18,6 +18,19 @@ public class AdjacencyMatrix {
         nMatrix = new int[nodes][nodes];
     }
 
+    public static void main(String[] args) {
+        AdjacencyMatrix nAdj = new AdjacencyMatrix(5, false);
+        nAdj.addEdge(0, 1);
+        nAdj.addEdge(0, 4);
+        nAdj.addEdge(1, 2);
+        nAdj.addEdge(1, 3);
+        nAdj.addEdge(1, 4);
+        nAdj.addEdge(2, 3);
+        nAdj.addEdge(3, 4);
+
+        nAdj.print();
+    }
+
     public int size() {
         return nNodes;
     }
@@ -48,18 +61,5 @@ public class AdjacencyMatrix {
                 System.out.print(" " + nMatrix[i][k]);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AdjacencyMatrix nAdj = new AdjacencyMatrix(5, false);
-        nAdj.addEdge(0, 1);
-        nAdj.addEdge(0, 4);
-        nAdj.addEdge(1, 2);
-        nAdj.addEdge(1, 3);
-        nAdj.addEdge(1, 4);
-        nAdj.addEdge(2, 3);
-        nAdj.addEdge(3, 4);
-
-        nAdj.print();
     }
 }

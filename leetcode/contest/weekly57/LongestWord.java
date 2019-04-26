@@ -1,6 +1,7 @@
 package leetcode.contest.weekly57;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by mashhur on 11/5/17.
@@ -8,7 +9,7 @@ import java.util.*;
 
 public class LongestWord {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //String words[] = {"a", "banana", "app", "appl", "ap", "apply", "apple"};
         // output: apple
 
@@ -18,16 +19,16 @@ public class LongestWord {
         //String words[] = {"yo","ew","fc","zrc","yodn","fcm","qm","qmo","fcmz","z","ewq","yod","ewqz","y"};
         // output: yodn
 
-        String words[] ={"k","lg","it","oidd","oid","oiddm","kfk","y","mw","kf","l","o","mwaqz","oi","ych","m","mwa"};
+        String words[] = {"k", "lg", "it", "oidd", "oid", "oiddm", "kfk", "y", "mw", "kf", "l", "o", "mwaqz", "oi", "ych", "m", "mwa"};
         System.out.println(longestWord(words));
     }
 
     public static String longestWord(String[] words) {
         String ans = "";
         Set<String> wordset = new HashSet();
-        for (String word: words)
+        for (String word : words)
             wordset.add(word);
-        for (String word: words) {
+        for (String word : words) {
             if (word.length() > ans.length() ||
                     (word.length() == ans.length() && word.compareTo(ans) < 0)) {
                 boolean good = true;

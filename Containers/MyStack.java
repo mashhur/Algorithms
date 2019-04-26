@@ -1,18 +1,19 @@
 package Containers;
+
 import sun.awt.Mutex;
 
 /**
  * Created by mashhur on 11/12/16.
  */
 public class MyStack<Object> {
+    Mutex mutex = new Mutex();
     private Node<Object> root;
     private long nSize = 0;
-    Mutex mutex = new Mutex();
 
-    public void push(Node node){
+    public void push(Node node) {
         mutex.lock();
         nSize++;
-        if(root == null)
+        if (root == null)
             root = node;
         else {
             Node nCurr = root;
@@ -22,9 +23,10 @@ public class MyStack<Object> {
         mutex.unlock();
     }
 
-    public Node pop(){
-        mutex.lock();;
-        if(root == null) return null;
+    public Node pop() {
+        mutex.lock();
+        ;
+        if (root == null) return null;
 
         nSize--;
         Node nRet = root;
@@ -37,18 +39,18 @@ public class MyStack<Object> {
     public void print() {
         mutex.lock();
         Node nCurr = root;
-        while (nCurr != null){
+        while (nCurr != null) {
             System.out.println("Node data : " + nCurr.data);
             nCurr = nCurr.next;
         }
         mutex.unlock();
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (root == null);
     }
 
-    public long getSize(){
+    public long getSize() {
         System.out.println("Size of my stack is : " + nSize);
         return nSize;
     }

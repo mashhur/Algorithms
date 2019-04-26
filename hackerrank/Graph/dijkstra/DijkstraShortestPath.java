@@ -1,6 +1,8 @@
 package hackerrank.Graph.dijkstra;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 /**
  * Created by mashhur on 2/14/17.
@@ -9,7 +11,7 @@ import java.util.*;
 
 public class DijkstraShortestPath {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
 /* simple test case
 1
@@ -23,21 +25,21 @@ public class DijkstraShortestPath {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();  // number of test cases
 
-        for (int i=0; i<t; i++){
+        for (int i = 0; i < t; i++) {
             int nVertices = sc.nextInt();   // vertices
             int nEdges = sc.nextInt();      // edges
 
-            Vertex[]    vertices = new Vertex[nVertices];
-            Edge[]      edges = new Edge[nEdges];
+            Vertex[] vertices = new Vertex[nVertices];
+            Edge[] edges = new Edge[nEdges];
 
-            for (int k=0; k<nVertices; k++){
+            for (int k = 0; k < nVertices; k++) {
                 vertices[k] = new Vertex(k);
             }
 
             // edge connections
-            for (int k=0; k<nEdges; k++) {
-                int u = sc.nextInt()-1;     // from Vertex
-                int v = sc.nextInt()-1;     // to Vertex
+            for (int k = 0; k < nEdges; k++) {
+                int u = sc.nextInt() - 1;     // from Vertex
+                int v = sc.nextInt() - 1;     // to Vertex
                 int x = sc.nextInt();       // weight
 
                 vertices[u].addNeignbourVertice(v);
@@ -46,15 +48,15 @@ public class DijkstraShortestPath {
                 vertices[v].addEdge(k);
                 edges[k] = new Edge(vertices[u], vertices[v], x);
             }
-            int nStart = sc.nextInt()-1;
+            int nStart = sc.nextInt() - 1;
             int[] distArr = calcShortestDistance(vertices, edges, nStart);
             for (Vertex vertex : vertices) {
-                if(vertex.getIdx() == nStart) continue;
+                if (vertex.getIdx() == nStart) continue;
 
-                if(vertex.getMinDistance() == Integer.MAX_VALUE)
+                if (vertex.getMinDistance() == Integer.MAX_VALUE)
                     System.out.print("-1 ");
                 else
-                   System.out.print(vertex.getMinDistance() + " ");
+                    System.out.print(vertex.getMinDistance() + " ");
             }
             System.out.println();
         }
@@ -70,25 +72,25 @@ public class DijkstraShortestPath {
 
         while (!queue.isEmpty()) {
             Vertex vertex = queue.poll();
-            if(vertex.isVisited())
+            if (vertex.isVisited())
                 continue;
 
             vertex.setVisited();
 
             //System.out.println("......... Traverse node ....... " + vertex.getIdx());
             for (int idx : vertex.getEdgeList()) {
-                if(!edges[idx].getFromVertice().isVisited())
+                if (!edges[idx].getFromVertice().isVisited())
                     queue.add(edges[idx].getFromVertice());
-                if(!edges[idx].getToVertice().isVisited())
+                if (!edges[idx].getToVertice().isVisited())
                     queue.add(edges[idx].getToVertice());
 
                 Vertex vChilVertex = null;
-                if(edges[idx].getFromVertice().getIdx() != vertex.getIdx())
+                if (edges[idx].getFromVertice().getIdx() != vertex.getIdx())
                     vChilVertex = edges[idx].getFromVertice();
                 else
                     vChilVertex = edges[idx].getToVertice();
 
-                if(vChilVertex.getMinDistance() > vertex.getMinDistance() + edges[idx].getWeight())
+                if (vChilVertex.getMinDistance() > vertex.getMinDistance() + edges[idx].getWeight())
                     vChilVertex.setMinDistance(vertex.getMinDistance() + edges[idx].getWeight());
 
                 //System.out.println("Vertex : " + vChilVertex.getIdx());

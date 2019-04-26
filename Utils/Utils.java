@@ -6,8 +6,8 @@ package Utils;
 public class Utils {
 
     public static void swap(int[] arr, int m, int n) {
-        if(m >= arr.length || m<0) return;
-        if(n >= arr.length || n<0) return;
+        if (m >= arr.length || m < 0) return;
+        if (n >= arr.length || n < 0) return;
 
         int nTemp = arr[m];
         arr[m] = arr[n];
@@ -18,15 +18,15 @@ public class Utils {
         partition(ar, 0, ar.length - 1);
     }
 
-    private static void partition(char[] ar, int left, int right){
+    private static void partition(char[] ar, int left, int right) {
         int pivot = ar[left + (right - left) / 2];
         int i = left;
         int j = right;
 
-        while (i <= j){
+        while (i <= j) {
             while (ar[i] < pivot)
                 i++;
-            while(ar[j] > pivot)
+            while (ar[j] > pivot)
                 j--;
 
             if (i <= j) {
@@ -36,14 +36,14 @@ public class Utils {
             }
         }
 
-        if(left < j) {
+        if (left < j) {
             partition(ar, left, j);
         }
-        if(i < right)
+        if (i < right)
             partition(ar, i, right);
     }
 
-    private static void swapChar(char[] ar, int n, int k){
+    private static void swapChar(char[] ar, int n, int k) {
         char nVal = ar[n];
         ar[n] = ar[k];
         ar[k] = nVal;

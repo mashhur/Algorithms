@@ -2,12 +2,11 @@ package test.serialize;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.time.format.SignStyle;
 import java.util.Date;
 
-public class ReadObject{
+public class ReadObject {
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
 
         Date date1 = new Date(System.currentTimeMillis() + (1000 * 60 * 10));
         Date date2 = new Date(System.currentTimeMillis() + (1000 * 60 * 11));
@@ -35,7 +34,7 @@ public class ReadObject{
             System.out.println(student);
 
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

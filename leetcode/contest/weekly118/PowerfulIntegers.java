@@ -1,8 +1,16 @@
 package leetcode.contest.weekly118;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PowerfulIntegers {
+
+    public static void main(String args[]) {
+        PowerfulIntegers powerfulIntegers = new PowerfulIntegers();
+        System.out.println(powerfulIntegers.powerfulIntegers(1, 2, 100));
+    }
 
     public List<Integer> powerfulIntegers(int x, int y, int bound) {
         Set<Integer> result = new HashSet<>();
@@ -18,10 +26,5 @@ public class PowerfulIntegers {
             }
         }
         return new ArrayList<>(result);
-    }
-
-    public static void main(String args[]) {
-        PowerfulIntegers powerfulIntegers = new PowerfulIntegers();
-        System.out.println(powerfulIntegers.powerfulIntegers(1,2,100));
     }
 }

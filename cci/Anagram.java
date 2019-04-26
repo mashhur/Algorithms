@@ -1,6 +1,6 @@
 package cci;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Created by mashhur on 1/7/17.
@@ -13,7 +13,7 @@ public class Anagram {
         StringBuilder str_b2 = new StringBuilder(second);
 
         int nDeleteCnt = 0;
-        for (char ch='a'; ch<='z'; ch++){
+        for (char ch = 'a'; ch <= 'z'; ch++) {
             int nCount1 = getConsistCount(str_b1, ch);
             int nCount2 = getConsistCount(str_b2, ch);
             System.out.println("String 1: " + ch + " " + nCount1);
@@ -25,20 +25,20 @@ public class Anagram {
         return nDeleteCnt;
     }
 
-    private static int getConsistCount(StringBuilder str_b, Character ch){
+    private static int getConsistCount(StringBuilder str_b, Character ch) {
         int nCount = 0;
         int nRet = 0;
-        while (nRet != -1){
+        while (nRet != -1) {
             nRet = str_b.indexOf(String.valueOf(ch), nRet);
-            if(nRet != -1)
-                nCount ++;
-            if(nRet != -1) nRet ++;
+            if (nRet != -1)
+                nCount++;
+            if (nRet != -1) nRet++;
         }
 
         return nCount;
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String a = in.next();
         String b = in.next();

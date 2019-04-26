@@ -15,8 +15,8 @@ public class ConnectedCells {
         int n = in.nextInt();
         int m = in.nextInt();
         int grid[][] = new int[n][m];
-        for(int i=0; i < n; i++){
-            for(int j=0; j < m; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 grid[i][j] = in.nextInt();
             }
         }
@@ -34,12 +34,12 @@ public class ConnectedCells {
         }
 
         Collections.sort(nList);
-        return nList.get(nList.size()-1);
+        return nList.get(nList.size() - 1);
     }
 
     static int DFS(int M[][], int row, int col, boolean visited[][], int ROW, int COL) {
-        int rowNbr[] = new int[] {-1, -1, -1,  0, 0,  1, 1, 1};
-        int colNbr[] = new int[] {-1,  0,  1, -1, 1, -1, 0, 1};
+        int rowNbr[] = new int[]{-1, -1, -1, 0, 0, 1, 1, 1};
+        int colNbr[] = new int[]{-1, 0, 1, -1, 1, -1, 0, 1};
 
         visited[row][col] = true;
 
@@ -56,6 +56,6 @@ public class ConnectedCells {
     static boolean isSafe(int M[][], int row, int col, boolean visited[][], int ROW, int COL) {
         return (row >= 0) && (row < ROW) &&
                 (col >= 0) && (col < COL) &&
-                (M[row][col]==1 && !visited[row][col]);
+                (M[row][col] == 1 && !visited[row][col]);
     }
 }

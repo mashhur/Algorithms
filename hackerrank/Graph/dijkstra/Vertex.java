@@ -14,39 +14,39 @@ public class Vertex {
     private int nMinDist = Integer.MAX_VALUE;
     private boolean isVisited = false;
 
-    public Vertex(int idx){
+    public Vertex(int idx) {
         this.idx = idx;
     }
 
-    public int getIdx(){
+    public int getIdx() {
         return idx;
     }
 
-    public void setVisited(){
+    public void setVisited() {
         isVisited = true;
     }
 
-    public boolean isVisited(){
+    public boolean isVisited() {
         return isVisited;
     }
 
-    public void setMinDistance(int dist){
-        nMinDist = dist;
-    }
-
-    public int getMinDistance(){
+    public int getMinDistance() {
         return nMinDist;
     }
 
-    public List<Integer> getNeighbourList(){
+    public void setMinDistance(int dist) {
+        nMinDist = dist;
+    }
+
+    public List<Integer> getNeighbourList() {
         return nNeighbourVertices;
     }
 
-    public void addNeignbourVertice(int idx){
+    public void addNeignbourVertice(int idx) {
         nNeighbourVertices.add(idx);
     }
 
-    public void addEdge(int idx){
+    public void addEdge(int idx) {
         nEdges.add(idx);
     }
 

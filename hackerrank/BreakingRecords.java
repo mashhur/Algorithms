@@ -8,11 +8,11 @@ import java.util.Scanner;
  */
 public class BreakingRecords {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int nSize = sc.nextInt();
         int[] nScores = new int[nSize];
-        for (int i=0; i<nSize; i++){
+        for (int i = 0; i < nSize; i++) {
             nScores[i] = sc.nextInt();
         }
 
@@ -20,11 +20,11 @@ public class BreakingRecords {
         PriorityQueue<Integer> pMinQueue = new PriorityQueue<>();
         int nMax = nScores[0];
         int nMin = nScores[0];
-        for (int i=1; i<nSize; i++){
-            if(nMax < nScores[i]) {
+        for (int i = 1; i < nSize; i++) {
+            if (nMax < nScores[i]) {
                 nMax = nScores[i];
                 pMaxQueue.add(nMax);
-            } else if(nMin > nScores[i]){
+            } else if (nMin > nScores[i]) {
                 nMin = nScores[i];
                 pMinQueue.add(nMin);
             }

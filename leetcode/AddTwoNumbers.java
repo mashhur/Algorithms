@@ -4,6 +4,14 @@ import java.util.Arrays;
 
 public class AddTwoNumbers {
 
+    public static void main(String args[]) {
+        int[] array = {1, 2, 3};
+        System.out.println(Arrays.binarySearch(array, 0));
+
+        char[] chArray = {'a', 'b', 'c'};
+        System.out.println(Arrays.binarySearch(chArray, 'Z'));
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null) return null;
 
@@ -28,14 +36,6 @@ public class AddTwoNumbers {
             dummy.next = new ListNode(1);
         }
         return head.next;
-    }
-
-    public static void main(String args[]) {
-        int[] array = {1,2,3};
-        System.out.println(Arrays.binarySearch(array, 0));
-
-        char[] chArray = {'a','b','c'};
-        System.out.println(Arrays.binarySearch(chArray, 'Z'));
     }
 }
 

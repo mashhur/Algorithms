@@ -1,6 +1,8 @@
 package cci;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Scanner;
 
 /**
  * Created by mashhur on 1/8/17.
@@ -8,7 +10,7 @@ import java.util.*;
  */
 public class RansomNote {
 
-    public static void main(String args[]){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int m = in.nextInt();
         int n = in.nextInt();

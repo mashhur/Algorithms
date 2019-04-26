@@ -10,6 +10,7 @@ import java.util.Map;
 class Book {
     int start;
     int end;
+
     Book(int start, int end) {
         this.start = start;
         this.end = end;
@@ -19,6 +20,7 @@ class Book {
 public class MyCalendar {
 
     Map<Integer, Book> map = new HashMap<>();
+
     public static void main(String[] args) {
         MyCalendar mycalendar = new MyCalendar();
         // mycalendar.book(10, 20); returns true
@@ -44,29 +46,29 @@ public class MyCalendar {
 
     public boolean book(int start, int end) {
         end = end - 1;
-        if(start > end) return false;
+        if (start > end) return false;
 
-        for (Map.Entry<Integer, Book> entry: map.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : map.entrySet()) {
 
             // date mismatch 1
-            if(start >= entry.getValue().start && start < entry.getValue().end
+            if (start >= entry.getValue().start && start < entry.getValue().end
                     && end > entry.getValue().end) {
                 return false;
             }
 
             // date mismatch 2
-            if(start <= entry.getValue().start && end > entry.getValue().start
+            if (start <= entry.getValue().start && end > entry.getValue().start
                     && end <= entry.getValue().end) {
                 return false;
             }
 
             // date mismatch 3
-            if(start <= entry.getValue().start && end >= entry.getValue().end) {
+            if (start <= entry.getValue().start && end >= entry.getValue().end) {
                 return false;
             }
 
             // double booking
-            if(start >= entry.getValue().start && end <= entry.getValue().end) {
+            if (start >= entry.getValue().start && end <= entry.getValue().end) {
                 return false;
             }
         }
@@ -77,30 +79,30 @@ public class MyCalendar {
 
     public boolean book2(int start, int end) {
         end = end - 1;
-        if(start > end) return false;
+        if (start > end) return false;
 
         int start_intersection = 0;
         int end_intersection = 0;
-        for (Map.Entry<Integer, Book> entry: map.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : map.entrySet()) {
 
             // date mismatch 1
-            if(start <= entry.getValue().start && end > entry.getValue().start
+            if (start <= entry.getValue().start && end > entry.getValue().start
                     && end <= entry.getValue().end) {
                 end_intersection++;
             }
 
             // date mismatch 2
-            if(start >= entry.getValue().start && start < entry.getValue().end
+            if (start >= entry.getValue().start && start < entry.getValue().end
                     && end > entry.getValue().end) {
                 start_intersection++;
             }
 
             // double booking
-            if(start >= entry.getValue().start && end <= entry.getValue().end) {
+            if (start >= entry.getValue().start && end <= entry.getValue().end) {
                 return false;
             }
 
-            if(start_intersection == 2 || end_intersection == 2)
+            if (start_intersection == 2 || end_intersection == 2)
                 return false;
         }
         map.put(map.size(), new Book(start, end));

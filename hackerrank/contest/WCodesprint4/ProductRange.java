@@ -10,7 +10,7 @@ public class ProductRange {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
-        for(int a0 = 0; a0 < t; a0++){
+        for (int a0 = 0; a0 < t; a0++) {
             int a = in.nextInt();
             int b = in.nextInt();
             int c = in.nextInt();
@@ -24,16 +24,40 @@ public class ProductRange {
     }
 
     static int productOfPages(int a, int b, int c, int d, int p, int q) {
-        if(p == a) { p=1; a=1; }
-        if(q == a) { q=1; a=1; }
-        if(p == b) { p=1; b=1; }
-        if(q == b) { q=1; b=1; }
-        if(p == c) { p=1; c=1; }
-        if(q == c) { q=1; c=1; }
-        if(p == d) { p=1; d=1; }
-        if(q == d) { q=1; d=1; }
+        if (p == a) {
+            p = 1;
+            a = 1;
+        }
+        if (q == a) {
+            q = 1;
+            a = 1;
+        }
+        if (p == b) {
+            p = 1;
+            b = 1;
+        }
+        if (q == b) {
+            q = 1;
+            b = 1;
+        }
+        if (p == c) {
+            p = 1;
+            c = 1;
+        }
+        if (q == c) {
+            q = 1;
+            c = 1;
+        }
+        if (p == d) {
+            p = 1;
+            d = 1;
+        }
+        if (q == d) {
+            q = 1;
+            d = 1;
+        }
         // Return the product of the page counts of the missing books
-        return a*b*c*d*p*q;
+        return a * b * c * d * p * q;
     }
 
 }

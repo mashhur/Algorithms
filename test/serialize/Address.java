@@ -9,20 +9,20 @@ public class Address implements Serializable {
     String street;
     String country;
 
-    public void setStreet(String street){
-        this.street = street;
-    }
-
-    public void setCountry(String country){
-        this.country = country;
-    }
-
-    public String getStreet(){
+    public String getStreet() {
         return this.street;
     }
 
-    public String getCountry(){
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCountry() {
         return this.country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override

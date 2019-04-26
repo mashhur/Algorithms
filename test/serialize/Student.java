@@ -13,7 +13,7 @@ public class Student implements Serializable {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -21,7 +21,7 @@ public class Student implements Serializable {
         return id;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
