@@ -15,24 +15,25 @@ public class AdjacencyList {
     private boolean isDirected;
 
     List<Integer>[] nAdjMap;
+
     public AdjacencyList(int vertexes, boolean bDirected) {
-        if(vertexes <= 0) return;
+        if (vertexes <= 0) return;
         this.isDirected = bDirected;
         this.v = vertexes;
         nAdjMap = new ArrayList[v];
-        for (int i=0; i<vertexes; i++) {
-            nAdjMap[i]= new ArrayList<Integer>();
+        for (int i = 0; i < vertexes; i++) {
+            nAdjMap[i] = new ArrayList<Integer>();
         }
     }
 
     public List<Integer> getVertice(int n) {
-        if(nAdjMap == null)
+        if (nAdjMap == null)
             return null;
 
         return nAdjMap[n];
     }
 
-    public int size(){
+    public int size() {
         return v;
     }
 
@@ -41,15 +42,15 @@ public class AdjacencyList {
     }
 
     public void addEdge(int x, int y) {
-        if(x >= v || y >= v) return;
+        if (x >= v || y >= v) return;
         nAdjMap[x].add(y);
 
-        if(!isDirected)
+        if (!isDirected)
             nAdjMap[y].add(x);
     }
 
     public void removeEdge(int x, int y) {
-        if(x >= v || y >= v) return;
+        if (x >= v || y >= v) return;
         int idx = nAdjMap[x].indexOf(y);
         nAdjMap[x].remove(idx);
 
@@ -58,11 +59,11 @@ public class AdjacencyList {
     }
 
     public void print() {
-        for (int i=0; i<v; i++) {
+        for (int i = 0; i < v; i++) {
             System.out.println();
             List<Integer> nList = nAdjMap[i];
             System.out.print(" " + i + " ->");
-            for(Integer k : nList){
+            for (Integer k : nList) {
                 System.out.print(" " + k);
             }
         }

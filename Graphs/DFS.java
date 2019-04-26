@@ -1,6 +1,5 @@
 package Graphs;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -17,12 +16,12 @@ public class DFS {
         stack.push(idx);
         bVisitedArr[idx] = true;
 
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             int n = stack.pop();
             System.out.println("Visit : " + n);
-            for (int i = 0; i < nAdjMatrix.size(); i++){
+            for (int i = 0; i < nAdjMatrix.size(); i++) {
                 int nVal = nAdjMatrix.getVertice(n, i);
-                if(nVal == 1 && bVisitedArr[i] == false){
+                if (nVal == 1 && bVisitedArr[i] == false) {
                     stack.push(i);
                     bVisitedArr[i] = true;
                 }
@@ -30,19 +29,19 @@ public class DFS {
         }
     }
 
-    public void traverse(AdjacencyList nAdjList, int idx){
+    public void traverse(AdjacencyList nAdjList, int idx) {
         Stack<Integer> stack = new Stack<>();
         boolean[] bVisitedArr = new boolean[nAdjList.size()];
 
         stack.push(idx);
         bVisitedArr[idx] = true;
 
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             int n = stack.pop();
             System.out.println("Visit : " + n);
             List<Integer> nList = nAdjList.getVertice(n);
-            for (int i : nList){
-                if(bVisitedArr[i] == false) {
+            for (int i : nList) {
+                if (bVisitedArr[i] == false) {
                     stack.push(i);
                     bVisitedArr[i] = true;
                 }
@@ -50,7 +49,7 @@ public class DFS {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /*
         AdjacencyMatrix nAdj = new AdjacencyMatrix(5);
         nAdj.addEdge(0, 1);
