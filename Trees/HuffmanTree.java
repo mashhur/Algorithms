@@ -88,7 +88,7 @@ class HuffmanCode {
     public static void HuffmanTreeTest(String[] args) {
 
         String test = "this is an example for huffman encoding";
-        test = "hackerrank";
+        test = "Hackerrank";
         // we will assume that all our characters will have
         // code less than 256, for simplicity
         int[] charFreqs = new int[256];
