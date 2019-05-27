@@ -11,7 +11,7 @@ class TrieNode {
 Input:
     4
     add hack
-    add hackerrank
+    add Hackerrank
     find hac
     find hak
 Output:
