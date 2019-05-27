@@ -7,7 +7,9 @@ import java.util.Stack;
 
 public class Graph {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        test();
+
+        /*Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 
         for (int i = 0; i < t; i++) {
@@ -24,7 +26,22 @@ public class Graph {
             }
 
             System.out.println(isCyclic(nVertices, alist));
+        }*/
+    }
+
+    static void test() {
+        List<Integer>[] listGraph = new ArrayList[6];
+        for (int i=0; i<listGraph.length; i++) {
+            listGraph[i] = new ArrayList<>();
         }
+
+        listGraph[0].add(1);
+        listGraph[1].add(2);
+        listGraph[2].add(3);
+        listGraph[2].add(5);
+        listGraph[3].add(4);
+        listGraph[4].add(0);
+        System.out.println(isCyclic(6, listGraph));
     }
 
     static boolean isCyclic(int v, List<Integer>[] list) {
