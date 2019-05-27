@@ -10,7 +10,7 @@ public class QuickSort {
     static int nSwaps;
 
     /*
-     * Quicksort 1 Problem of hackerrank
+     * Quicksort 1 Problem of Hackerrank
      */
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
@@ -77,7 +77,7 @@ public class QuickSort {
     }
 
     /*
-     * Quicksort 2 Problem of hackerrank
+     * Quicksort 2 Problem of Hackerrank
      */
     public static void TestQuickSort2() {
         Scanner sc = new Scanner(System.in);
