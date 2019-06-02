@@ -28,19 +28,19 @@ class BinaryTree {
         printInorder(node.right);
     }
 
-    private static void Preorder(TreeNode root) {
+    private static void preOrder(TreeNode root) {
         if (root != null) {
             //Visit the node by Printing the node data
             System.out.printf("%d ", root.data);
-            Preorder(root.left);
-            Preorder(root.right);
+            preOrder(root.left);
+            preOrder(root.right);
         }
     }
 
-    private static void Postorder(TreeNode root) {
+    private static void postOrder(TreeNode root) {
         if (root != null) {
-            Postorder(root.left);
-            Postorder(root.right);
+            postOrder(root.left);
+            postOrder(root.right);
             //Visit the node by Printing the node data
             System.out.printf("%d ", root.data);
         }
@@ -94,10 +94,10 @@ class BinaryTree {
         //tree.printInorder(root);
 
         System.out.println("----- Pre order -----");
-        Preorder(root);
+        preOrder(root);
         System.out.println();
         System.out.println("----- Post order -----");
-        Postorder(root);
+        postOrder(root);
 
         System.out.println();
         System.out.println("----- In order -----");
@@ -160,28 +160,4 @@ class BinaryTree {
         return root;
     }
 
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     * int data;
-     * TreeNode left;
-     * TreeNode right;
-     * TreeNode(int x) { val = x; }
-     * }
-     */
-    class Solution {
-
-        public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-            if (t1 == null && t2 == null) return null;
-
-            int val = (t1 == null ? 0 : t1.data) + (t2 == null ? 0 : t2.data);
-            TreeNode newNode = new TreeNode(val);
-
-            newNode.left = mergeTrees(t1 == null ? null : t1.left, t2 == null ? null : t2.left);
-            newNode.right = mergeTrees(t1 == null ? null : t1.right, t2 == null ? null : t2.right);
-
-            return newNode;
-        }
-
-    }
 }
