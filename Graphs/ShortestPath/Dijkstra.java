@@ -1,14 +1,20 @@
 package Graphs.ShortestPath;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-class Vertex {
+class Vertex implements Comparable<Vertex> {
     int index;
     List<Edge> edges;
     int minDistance = Integer.MAX_VALUE;
+
+    @Override
+    public int compareTo(Vertex o) {
+        if (this.minDistance < o.minDistance)
+            return -1;
+        if (this.minDistance > o.minDistance)
+            return 1;
+        return 0;
+    }
 }
 
 class Edge {
@@ -65,7 +71,7 @@ public class Dijkstra {
             throw new ArrayIndexOutOfBoundsException("Invalid start or end node.");
 
         // BFS
-        Queue<Vertex> queue = new LinkedList<>();
+        PriorityQueue<Vertex> queue = new PriorityQueue<>();
         fromNode.minDistance = 0;
         queue.add(fromNode);
 
