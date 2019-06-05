@@ -15,14 +15,18 @@ public class StringPermutation {
 
     public void permute(int index, int length, String word) {
         if (index == length) {
-            System.out.print(word);
+            System.out.println(word);
             return;
         }
 
         for (int i = index; i <= length; i++) {
-            word = swap(word, index, i);
+            if (i != index)
+                word = swap(word, index, i);
+
             permute(index + 1, length, word);
-            word = swap(word, index, i);
+
+            if (i != index)
+                word = swap(word, index, i);
         }
     }
 
