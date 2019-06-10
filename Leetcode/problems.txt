@@ -17,11 +17,11 @@ Most Common Word  42.2%  Easy
 Prison Cells After N Days  38.0%  Medium
 138
 Copy List with Random Pointer  27.2%  Medium
-
 763
 Partition Labels  70.5%  Medium
 103
 Binary Tree Zigzag Level Order Traversal  41.8%  Medium
+
 295
 Find Median from Data Stream  36.7%  Hard
 642
