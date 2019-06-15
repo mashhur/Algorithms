@@ -4,6 +4,9 @@ public class Multiplication {
 
     // input    [2,  7,  3,  4]
     // output   [84, 24, 56, 42]
+
+    // TC: O(N)
+    // SC: O(N)
     int[] multiplication(int[] arr) {
         if (arr.length <= 1)
             return new int[0];
