@@ -1,15 +1,16 @@
 package Exercises;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Subsets {
 
-    static public void main( String args[] ) {
-        int[] array = {1,2,3};
+    static public void main(String args[]) {
+        int[] array = {1, 2, 3};
         List<List<Integer>> list = subsets(array);
 
-        for(List<Integer> l : list) {
-            for(int i : l) {
+        for (List<Integer> l : list) {
+            for (int i : l) {
                 System.out.print(i + " ");
             }
             System.out.println();
@@ -32,7 +33,7 @@ public class Subsets {
 
         resultList.add(new ArrayList<>(currentList));
 
-        for(int i = index; i < array.length; i++) {
+        for (int i = index; i < array.length; i++) {
             currentList.add(array[i]);
             subset(array, i + 1, resultList, currentList);
             currentList.remove(currentList.size() - 1);
