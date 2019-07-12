@@ -46,6 +46,7 @@ Design Tic-Tac-Toe
 165
 Compare Version Numbers  23.6%  Medium
 505
+
 The Maze II
 43.9%  Medium
 273
