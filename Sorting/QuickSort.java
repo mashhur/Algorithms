@@ -25,7 +25,7 @@ public class QuickSort {
         }
 
         quickSort(nArr);
-        System.out.println(nSwaps);
+        //System.out.println(nSwaps);
     }
 
     private static void quickSort(int[] ar) {
@@ -50,6 +50,7 @@ public class QuickSort {
                 j--;
             }
         }
+        printArray(ar, left, right);
 
         if (left < j) {
             partition(ar, left, j);
