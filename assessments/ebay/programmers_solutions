@@ -1,0 +1,247 @@
+import java.util.*;
+
+class Order {
+    int customerId;
+    int count;
+
+    public Order(int customerId, int count) {
+        this.customerId = customerId;
+        this.count = count;
+    }
+}
+
+class Solution {
+    Map<Integer, Order> orders = new HashMap<>();
+    public int[] solution(int[] people) {
+        list<Integer> counts = new ArrayList<>();
+        for (int person : people) {
+            if (orders.containsKey(person)) {
+                Order order = orders.get(person);
+                order.count++;
+                if (order.count == 4) {
+                    order.count = 1;
+                    counts.add(person);
+                }
+                if (counts.size() == 2)
+                    break;
+                orders.put(person, order);
+            } else {
+                Order order = new Order(person, 1);
+                orders.put(person, order);
+            }
+        }
+
+        if (counts.size() == 0)
+            return new int[]{-1};
+        int[] answer = new int[counts.size()];
+        for (int i=0; i < answer.length; i++) {
+            answer[i] = counts.get(i).intValue();
+        }
+        return answer;
+    }
+}
+
+class Solution {
+
+    public long solution(long n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        return helper(n-1, n);
+
+        /*
+        2) 1*2 + 1
+        3)
+            1*3 + 1
+            2*3 + 2
+        4)
+            1*4 + 1
+            2*4 + 2
+            3*4 + 3
+
+        (n-1)*4 + (n-1)*/
+    }
+
+    long helper(long m, long n) {
+        if (m == 0)
+            return 0;
+        return (m*n + m) + helper(m-1, n);
+    }
+}
+
+import java.util.*;
+
+class Solution {
+    // Time complexity : O(N)
+    // Space complexity: O(1)
+    public long solution(long n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        long sum = 0;
+        for (int i=1; i<n; i++) {
+            sum += (i * (n+1));
+        }
+        return sum;
+    }
+}
+
+
+
+
+
+    import java.util.*;
+
+    class Solution {
+
+        // Time complexity : O(N*M)
+        // Space complexity: O(1)
+        public int solution(int[][] maps) {
+            list<Integer> areas = new ArrayList<>();
+            for (int i=0; i<maps.length; i++) {
+                for (int j=0; j<maps[i].length; j++) {
+                    if (maps[i][j] == 1) {
+                        int area = visitCells(i, j, maps);
+                        //System.out.println(area);
+                        areas.add(area);
+                    }
+                    System.out.println();
+                }
+            }
+            int sum = 0;
+            for (int area : areas) {
+                sum += area;
+            }
+            return sum;
+        }
+
+        // DFS solution
+        private int visitCells(int i, int j, int[][] grid) {
+            if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length)
+                return 0;
+            if (grid[i][j] == 0 || grid[i][j] == -1)
+                return 0;
+
+            int area = getArea(i,j, grid);
+
+            grid[i][j] = -1; // set as visited
+            return area + visitCells(i + 1, j, grid) +
+                            visitCells(i - 1, j, grid) +
+                            visitCells(i, j + 1, grid) +
+                            visitCells(i, j - 1, grid);
+        }
+
+        int getArea(int i, int j, int[][] grid) {
+            int area = 4;
+            if (i-1 >= 0 && grid[i-1][j] != 0)
+                area--;
+            if (i+1 < grid.length && grid[i+1][j] != 0)
+                area--;
+            if (j-1 >= 0 && grid[i][j-1] != 0)
+                area--;
+            if (j+1 < grid[i].length && grid[i][j+1] != 0)
+                area--;
+            return area;
+        }
+    }
+
+
+
+    import java.util.*;
+
+    class Vertex implements Comparable<Vertex> {
+        int index;
+        list<Edge> edges;
+        int minDistance = Integer.MAX_VALUE;
+
+        @Override
+        public int compareTo(Vertex o) {
+            if (this.minDistance < o.minDistance)
+                return -1;
+            if (this.minDistance > o.minDistance)
+                return 1;
+            return 0;
+        }
+    }
+
+    class Edge {
+        Vertex to;
+        int distance;
+
+        public Edge(Vertex to, int distance) {
+            this.to = to;
+            this.distance = distance;
+        }
+    }
+
+    class Solution {
+
+        public int solution(int n, int[][] network, int[][] repair) {
+            Vertex[] graph = new Vertex[n];
+
+            for (int i=0; i<n; i++) {
+                graph[i] = new Vertex();
+                graph[i].index = i;
+                graph[i].edges = new ArrayList<>();
+            }
+
+            for (int i=0; i<network.length; i++) {
+                int from = network[i][0]-1; // from
+                int to = network[i][1]-1; // to
+                graph[from].edges.add(new Edge(graph[to], 0));
+            }
+
+            for (int i=0; i<repair.length; i++) {
+                int from = repair[i][0]-1; // from
+                int to = repair[i][1]-1; // to
+                if (from > to) {
+                    from = to;
+                    to = repair[i][0]-1;
+                }
+                int cost = repair[i][2]; // cost
+                graph[from].edges.add(new Edge(graph[to], cost));
+            }
+
+            return shortestPath(graph[0], graph[n-1], graph);
+        }
+
+        public int shortestPath(Vertex fromNode, Vertex toNode, Vertex[] graph) {
+            if (fromNode.index >= graph.length || toNode.index >= graph.length)
+                return -1;
+
+            // BFS
+            PriorityQueue<Vertex> queue = new PriorityQueue<>();
+            fromNode.minDistance = 0;
+            queue.add(fromNode);
+
+            boolean visited[] = new boolean[graph.length];
+
+            while (queue.isEmpty() == false) {
+                Vertex node = queue.poll();
+                visited[node.index] = true;
+
+                if (node.index == toNode.index) {
+                    return toNode.minDistance; // found
+                }
+
+                if (graph[node.index].edges != null) {
+                    for (Edge edge : graph[node.index].edges) {
+                        if (visited[edge.to.index])
+                            continue;
+
+                        if (node.minDistance + edge.distance < edge.to.minDistance)
+                            edge.to.minDistance = node.minDistance + edge.distance;
+                        queue.add(edge.to);
+                    }
+                }
+            }
+
+            return -1;
+        }
+    }
+
+
+https://programmers.co.kr/tryouts/9656/submissions/3515466?challengeable_type=ChallengeAlgorithm
+https://programmers.co.kr/tryouts/9656/submissions/3515323?challengeable_type=ChallengeAlgorithm
+https://programmers.co.kr/tryouts/9656/submissions/3515425?challengeable_type=ChallengeAlgorithm
+https://programmers.co.kr/tryouts/9656/submissions/3515461?challengeable_type=ChallengeAlgorithm
