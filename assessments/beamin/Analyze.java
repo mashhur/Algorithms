@@ -11,7 +11,7 @@ public class Analyze {
         Arrays.sort(B);
         int i = 0;
         for (int k = 0; k < n; k++) {
-            while (i < m - 1 && B[i] < A[k])
+            while (i < A[k])
                 i += 1;
             if (A[k] == B[i])
                 return A[k];
